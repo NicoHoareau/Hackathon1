@@ -40,9 +40,10 @@ public class SelectPersoActivity extends AppCompatActivity {
 
         //TODO : faire les résultats
 
-        results.add(new HeroModel(149, "Captain America", 69, 19, 38, 55, 60, 100,R.drawable.img149_1,R.drawable.ic_launcher_background,R.drawable.ic_launcher_background, R.drawable.img149_icon));
-        results.add(new HeroModel(176, "Chuck Norris", 50, 80, 47, 56, 42, 99 ,R.drawable.ic_launcher_background,R.drawable.ic_launcher_background,R.drawable.ic_launcher_background, R.drawable.spiderman));
-        results.add(new HeroModel(208, "Dark Vador", 69, 48, 33, 35, 100, 100,R.drawable.img208_1,R.drawable.ic_launcher_background,R.drawable.ic_launcher_background, R.drawable.img208_icon));
+        results.add(new HeroModel(70, "Batman", 100, 26, 27, 50, 47, 100, R.drawable.ic_launcher_background,R.drawable.ic_launcher_background,R.drawable.ic_launcher_background, R.drawable.ic_launcher_background));
+        results.add(new HeroModel(149, "Captain America", 69, 19, 38, 55, 60, 100,R.drawable.ic_launcher_background,R.drawable.ic_launcher_background,R.drawable.ic_launcher_background, R.drawable.ic_launcher_background));
+        results.add(new HeroModel(176, "Chuck Norris", 50, 80, 47, 56, 42, 99 ,R.drawable.ic_launcher_background,R.drawable.ic_launcher_background,R.drawable.ic_launcher_background, R.drawable.ic_launcher_background));
+        results.add(new HeroModel(208, "Dark Vador", 69, 48, 33, 35, 100, 100,R.drawable.ic_launcher_background,R.drawable.ic_launcher_background,R.drawable.ic_launcher_background, R.drawable.ic_launcher_background));
         results.add(new HeroModel(213, "Dead Pool",69, 32, 50, 100, 100, 100, R.drawable.ic_launcher_background,R.drawable.ic_launcher_background,R.drawable.ic_launcher_background, R.drawable.ic_launcher_background));
         results.add(new HeroModel(263, "Flash", 63, 10, 100, 50, 68, 32,R.drawable.ic_launcher_background,R.drawable.ic_launcher_background,R.drawable.ic_launcher_background, R.drawable.ic_launcher_background));
         results.add(new HeroModel(289, "Goku", 56, 100, 75, 90, 100, 100,R.drawable.ic_launcher_background,R.drawable.ic_launcher_background,R.drawable.ic_launcher_background, R.drawable.ic_launcher_background));
@@ -59,8 +60,7 @@ public class SelectPersoActivity extends AppCompatActivity {
         results.add(new HeroModel(644, "SuperMan", 94, 100, 100, 100, 100, 85, R.drawable.ic_launcher_background,R.drawable.ic_launcher_background,R.drawable.ic_launcher_background, R.drawable.ic_launcher_background));
         results.add(new HeroModel(650, "T800", 75, 34, 17, 60, 73, 65 ,R.drawable.ic_launcher_background,R.drawable.ic_launcher_background,R.drawable.ic_launcher_background, R.drawable.ic_launcher_background));
         results.add(new HeroModel(720, "Wonder Woman", 88, 100, 79, 100, 100, 100, R.drawable.ic_launcher_background,R.drawable.ic_launcher_background,R.drawable.ic_launcher_background, R.drawable.ic_launcher_background));
-        results.add(new HeroModel(720, "Batman", 100, 26, 27, 50, 47, 100, R.drawable.ic_launcher_background,R.drawable.ic_launcher_background,R.drawable.ic_launcher_background, R.drawable.ic_launcher_background));
-
+       
 
         SelectPersoAdapter adapter = new SelectPersoAdapter(this, results);
         gridview.setAdapter(adapter);
@@ -69,7 +69,6 @@ public class SelectPersoActivity extends AppCompatActivity {
         gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-
 
                 if (status == 0) {
                     HeroModel item = (HeroModel) gridview.getItemAtPosition(position);
