@@ -2,8 +2,11 @@ package fr.nicolashoareau_toulousewcs.hackathon1;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+
+import java.io.Serializable;
 
 import pl.droidsonroids.gif.GifImageView;
 
@@ -26,13 +29,7 @@ public class ArenaActivity extends AppCompatActivity {
         GifImageView street = findViewById(R.id.gif_iv_street);
 
 
-        //firehouse.setOnClickListener(new View.OnClickListener() {
-            //@Override
-            //public void onClick(View v) {
-              //  Intent goToFight = new Intent(ArenaActivity.this,FightActivity.class);
-                //startActivity(goToFight);
-            //}
-        //});
+
 
 
 

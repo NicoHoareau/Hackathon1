@@ -85,7 +85,7 @@ public class SelectPersoActivity extends AppCompatActivity {
                     Parcelable hero2 = new HeroModel(item.getId(),item.getName(), item.getIntelligence(), item.getStrength(), item.getSpeed(), item.getDurability(), item.getPower(), item.getCombat(), item.getImage1(), item.getImage2(), item.getImage3(), item.getIcon());
                     gridview.setVisibility(View.GONE);
                     boutonFight.setVisibility(View.VISIBLE);
-                    boutonSelectMap.setVisibility(View.VISIBLE);
+                    boutonSelectMap.setVisibility(View.GONE);
                     intent.putExtra("intenthero2", hero2);
                 }
             }
