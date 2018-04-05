@@ -103,6 +103,7 @@
         android:layout_marginBottom="8dp"
         android:layout_marginStart="8dp"
         android:text="TextView"
+        style="@style/textname"
         app:layout_constraintBottom_toBottomOf="@+id/imageView_icon1"
         app:layout_constraintStart_toEndOf="@+id/imageView_icon1" />
 
@@ -113,6 +114,7 @@
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:text="TextView"
+        style="@style/textname"
         app:layout_constraintBottom_toBottomOf="@+id/imageView_icon2"
         app:layout_constraintEnd_toStartOf="@+id/imageView_icon2" />
 
@@ -123,6 +125,7 @@
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:text="TextView"
+        style="@style/textname"
         app:layout_constraintBottom_toTopOf="@+id/button_Att"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -133,6 +136,7 @@
         android:layout_marginBottom="8dp"
         android:layout_marginStart="8dp"
         android:text="TextView"
+        style="@style/textname"
         app:layout_constraintBottom_toTopOf="@+id/button_Att"
         app:layout_constraintStart_toStartOf="parent" />
 </android.support.constraint.ConstraintLayout>

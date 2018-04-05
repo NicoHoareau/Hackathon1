@@ -40,9 +40,9 @@ public class SelectPersoActivity extends AppCompatActivity {
 
         //TODO : faire les résultats
 
-        results.add(new HeroModel(149, "Captain America", 69, 19, 38, 55, 60, 100,R.drawable.ic_launcher_background,R.drawable.ic_launcher_background,R.drawable.ic_launcher_background, R.drawable.spider2));
+        results.add(new HeroModel(149, "Captain America", 69, 19, 38, 55, 60, 100,R.drawable.img149_1,R.drawable.ic_launcher_background,R.drawable.ic_launcher_background, R.drawable.img149_icon));
         results.add(new HeroModel(176, "Chuck Norris", 50, 80, 47, 56, 42, 99 ,R.drawable.ic_launcher_background,R.drawable.ic_launcher_background,R.drawable.ic_launcher_background, R.drawable.spiderman));
-        results.add(new HeroModel(208, "Dark Vador", 69, 48, 33, 35, 100, 100,R.drawable.ic_launcher_background,R.drawable.ic_launcher_background,R.drawable.ic_launcher_background, R.drawable.ic_launcher_background));
+        results.add(new HeroModel(208, "Dark Vador", 69, 48, 33, 35, 100, 100,R.drawable.img208_1,R.drawable.ic_launcher_background,R.drawable.ic_launcher_background, R.drawable.img208_icon));
         results.add(new HeroModel(213, "Dead Pool",69, 32, 50, 100, 100, 100, R.drawable.ic_launcher_background,R.drawable.ic_launcher_background,R.drawable.ic_launcher_background, R.drawable.ic_launcher_background));
         results.add(new HeroModel(263, "Flash", 63, 10, 100, 50, 68, 32,R.drawable.ic_launcher_background,R.drawable.ic_launcher_background,R.drawable.ic_launcher_background, R.drawable.ic_launcher_background));
         results.add(new HeroModel(289, "Goku", 56, 100, 75, 90, 100, 100,R.drawable.ic_launcher_background,R.drawable.ic_launcher_background,R.drawable.ic_launcher_background, R.drawable.ic_launcher_background));
@@ -73,14 +73,14 @@ public class SelectPersoActivity extends AppCompatActivity {
 
                 if (status == 0) {
                     HeroModel item = (HeroModel) gridview.getItemAtPosition(position);
-                    imgPlayer1.setImageResource(item.getIcon());
+                    imgPlayer1.setImageResource(item.getImage1());
                     status++;
                     Parcelable hero1 = new HeroModel(item.getId(),item.getName(), item.getIntelligence(), item.getStrength(), item.getSpeed(), item.getDurability(), item.getPower(), item.getCombat(), item.getImage1(), item.getImage2(), item.getImage3(), item.getIcon());
                     intent.putExtra("intenthero1", hero1);
 
                 } else if (status == 1) {
                     HeroModel item = (HeroModel) gridview.getItemAtPosition(position);
-                    imgPlayer2.setImageResource(item.getIcon());
+                    imgPlayer2.setImageResource(item.getImage1());
                     status++;
                     Parcelable hero2 = new HeroModel(item.getId(),item.getName(), item.getIntelligence(), item.getStrength(), item.getSpeed(), item.getDurability(), item.getPower(), item.getCombat(), item.getImage1(), item.getImage2(), item.getImage3(), item.getIcon());
                     gridview.setVisibility(View.GONE);
@@ -105,6 +105,7 @@ public class SelectPersoActivity extends AppCompatActivity {
                 status = 0;
                 gridview.setVisibility(View.VISIBLE);
                 boutonFight.setVisibility(View.GONE);
+                boutonSelectMap.setVisibility(View.GONE);
             }
         });
 
