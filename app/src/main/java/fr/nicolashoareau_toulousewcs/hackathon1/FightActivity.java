@@ -41,10 +41,15 @@ public class FightActivity  extends AppCompatActivity {
         life2 = findViewById(R.id.progressBar2);
 
         Intent intent = getIntent();
-        HeroModel hero1 = getIntent().getExtras().getParcelable("intenthero1");
-        HeroModel hero2 = getIntent().getExtras().getParcelable("intenthero2");
+        final HeroModel hero1 = getIntent().getExtras().getParcelable("intenthero1");
+        final HeroModel hero2 = getIntent().getExtras().getParcelable("intenthero2");
         name1.setText(hero1.getName());
         name2.setText(hero2.getName());
+        life1.setMax(hero1.getDurability());
+        life1.setProgress(hero1.getDurability());
+        life2.setMax(hero2.getDurability());
+        life2.setProgress(hero2.getDurability());
+
 
     }
 }
