@@ -9,7 +9,6 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageView;
-
 import java.util.ArrayList;
 
 /**
@@ -23,6 +22,7 @@ public class SelectPersoActivity extends AppCompatActivity {
     Button boutonSelect;
     Button boutonFight;
     int status = 0;
+    Button boutonSelectMap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +33,7 @@ public class SelectPersoActivity extends AppCompatActivity {
         imgPlayer2 = findViewById(R.id.iv_player2);
         boutonSelect = findViewById(R.id.button_selection);
         boutonFight = findViewById(R.id.button_fight);
+        boutonSelectMap = findViewById(R.id.button_arena);
 
         final GridView gridview = (GridView) findViewById(R.id.grid_select_perso);
         ArrayList<HeroModel> results = new ArrayList<>();
@@ -65,8 +66,6 @@ public class SelectPersoActivity extends AppCompatActivity {
         gridview.setAdapter(adapter);
         final Intent intent = new Intent(SelectPersoActivity.this, FightActivity.class);
 
-
-
         gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
@@ -86,6 +85,7 @@ public class SelectPersoActivity extends AppCompatActivity {
                     Parcelable hero2 = new HeroModel(item.getId(),item.getName(), item.getIntelligence(), item.getStrength(), item.getSpeed(), item.getDurability(), item.getPower(), item.getCombat(), item.getImage1(), item.getImage2(), item.getImage3(), item.getIcon());
                     gridview.setVisibility(View.GONE);
                     boutonFight.setVisibility(View.VISIBLE);
+                    boutonSelectMap.setVisibility(View.VISIBLE);
                     intent.putExtra("intenthero2", hero2);
                 }
             }
@@ -107,6 +107,9 @@ public class SelectPersoActivity extends AppCompatActivity {
                 boutonFight.setVisibility(View.GONE);
             }
         });
+
+
+
 
 
     }
