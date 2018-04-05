@@ -1,15 +1,21 @@
 package fr.nicolashoareau_toulousewcs.hackathon1;
 
 import android.content.Intent;
+import android.content.res.Resources;
+import android.content.res.TypedArray;
 import android.os.Bundle;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.util.Random;
+
+import pl.droidsonroids.gif.GifImageView;
 
 /**
  * Created by wilder on 05/04/18.
@@ -28,8 +34,6 @@ public class FightActivity  extends AppCompatActivity {
     ProgressBar life1;
     ProgressBar life2;
     int damage = 0;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +68,22 @@ public class FightActivity  extends AppCompatActivity {
         life2.setMax(hero2.getDurability());
         life2.setProgress(hero2.getDurability());
 
+        final int[] photos={R.drawable.gifview1firehouse, R.drawable.gifview2rainkioske,R.drawable.gifview3cascadegif, R.drawable.dark_temple};
+
+        final GifImageView gifImageView = findViewById(R.id.gif_iv);
+
+        final Random ran =new Random();
+        final int i = ran.nextInt(photos.length);
+        gifImageView.setImageResource(photos[i]);
+        gifImageView.setOnClickListener(new View.OnClickListener()
+                                 {
+                                     public void onClick(View v)
+                                     {
+                                         int k = ran.nextInt(photos.length);
+                                         gifImageView.setImageResource(photos[k]);
+                                     }
+                                 }
+        );
         textTest1.setText(hero1.getIntelligence() + " , " + hero1.getStrength() + " , " + hero1.getPower() + " , " + hero1.getCombat() + " , " + hero1.getDurability());
         textTest2.setText(hero2.getIntelligence() + " , " + hero2.getStrength() + " , " + hero2.getPower() + " , " + hero2.getCombat() + " , " + hero2.getDurability());
 
@@ -147,9 +167,6 @@ public class FightActivity  extends AppCompatActivity {
 
             }
         });
-
-
-
 
     }
 }
