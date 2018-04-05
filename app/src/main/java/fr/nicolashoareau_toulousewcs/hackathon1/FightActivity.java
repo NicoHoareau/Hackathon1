@@ -53,6 +53,10 @@ public class FightActivity  extends AppCompatActivity {
         Intent intent = getIntent();
         final HeroModel hero1 = getIntent().getExtras().getParcelable("intenthero1");
         final HeroModel hero2 = getIntent().getExtras().getParcelable("intenthero2");
+        imageperso1.setImageResource(hero1.getImage1());
+        imageperso2.setImageResource(hero2.getImage1());
+        icon1.setImageResource(hero1.getIcon());
+        icon2.setImageResource(hero2.getIcon());
         name1.setText(hero1.getName());
         name2.setText(hero2.getName());
         life1.setMax(hero1.getDurability());
