@@ -58,6 +58,7 @@ public class SelectPersoActivity extends AppCompatActivity {
         results.add(new HeroModel(644, "SuperMan", 94, 100, 100, 100, 100, 85, R.drawable.ic_launcher_background,R.drawable.ic_launcher_background,R.drawable.ic_launcher_background, R.drawable.ic_launcher_background));
         results.add(new HeroModel(650, "T800", 75, 34, 17, 60, 73, 65 ,R.drawable.ic_launcher_background,R.drawable.ic_launcher_background,R.drawable.ic_launcher_background, R.drawable.ic_launcher_background));
         results.add(new HeroModel(720, "Wonder Woman", 88, 100, 79, 100, 100, 100, R.drawable.ic_launcher_background,R.drawable.ic_launcher_background,R.drawable.ic_launcher_background, R.drawable.ic_launcher_background));
+        results.add(new HeroModel(720, "Batman", 100, 26, 27, 50, 47, 100, R.drawable.ic_launcher_background,R.drawable.ic_launcher_background,R.drawable.ic_launcher_background, R.drawable.ic_launcher_background));
 
 
         SelectPersoAdapter adapter = new SelectPersoAdapter(this, results);
