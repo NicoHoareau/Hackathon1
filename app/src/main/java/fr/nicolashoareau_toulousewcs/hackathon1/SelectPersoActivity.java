@@ -1,7 +1,10 @@
 package fr.nicolashoareau_toulousewcs.hackathon1;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.GridView;
 
 import java.util.ArrayList;
@@ -16,6 +19,7 @@ public class SelectPersoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.selection_perso);
+
 
         GridView gridview = (GridView) findViewById(R.id.grid_select_perso);
         ArrayList<HeroModel> results = new ArrayList<>();
@@ -45,6 +49,18 @@ public class SelectPersoActivity extends AppCompatActivity {
 
         SelectPersoAdapter adapter = new SelectPersoAdapter(this, results);
         gridview.setAdapter(adapter);
+
+
+        gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+                SelectPersoModel item = (SelectPersoModel) gridview.getItemAtPosition(position);
+                Intent intent = new Intent(SelectPersoActivity.this, FightActivity.class);
+                int idHero = item.getId();
+                intent.putExtra("idHero",id);
+                SelectPersoActivity.this.startActivity(intent);
+            }
+        });
 
 
     }
