@@ -21,7 +21,7 @@ public class SelectPersoActivity extends AppCompatActivity {
         setContentView(R.layout.selection_perso);
 
 
-        GridView gridview = (GridView) findViewById(R.id.grid_select_perso);
+        final GridView gridview = (GridView) findViewById(R.id.grid_select_perso);
         ArrayList<HeroModel> results = new ArrayList<>();
 
         //TODO : faire les résultats
@@ -54,7 +54,7 @@ public class SelectPersoActivity extends AppCompatActivity {
         gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-                SelectPersoModel item = (SelectPersoModel) gridview.getItemAtPosition(position);
+                HeroModel item = (HeroModel) gridview.getItemAtPosition(position);
                 Intent intent = new Intent(SelectPersoActivity.this, FightActivity.class);
                 int idHero = item.getId();
                 intent.putExtra("idHero",id);
