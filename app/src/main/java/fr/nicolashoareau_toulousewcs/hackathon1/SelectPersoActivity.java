@@ -18,30 +18,29 @@ public class SelectPersoActivity extends AppCompatActivity {
         setContentView(R.layout.selection_perso);
 
         GridView gridview = (GridView) findViewById(R.id.grid_select_perso);
-        ArrayList<SelectPersoModel> results = new ArrayList<>();
+        ArrayList<HeroModel> results = new ArrayList<>();
 
         //TODO : faire les résultats
 
-        results.add(new SelectPersoModel(70, R.drawable.ic_launcher_background));
-        results.add(new SelectPersoModel(149, R.drawable.ic_launcher_background));
-        results.add(new SelectPersoModel(176, R.drawable.ic_launcher_background));
-        results.add(new SelectPersoModel(208, R.drawable.ic_launcher_background));
-        results.add(new SelectPersoModel(213, R.drawable.ic_launcher_background));
-        results.add(new SelectPersoModel(263, R.drawable.ic_launcher_background));
-        results.add(new SelectPersoModel(289, R.drawable.ic_launcher_background));
-        results.add(new SelectPersoModel(310, R.drawable.ic_launcher_background));
-        results.add(new SelectPersoModel(332, R.drawable.ic_launcher_background));
-        results.add(new SelectPersoModel(346, R.drawable.ic_launcher_background));
-        results.add(new SelectPersoModel(352, R.drawable.ic_launcher_background));
-        results.add(new SelectPersoModel(370, R.drawable.ic_launcher_background));
-        results.add(new SelectPersoModel(373, R.drawable.ic_launcher_background));
-        results.add(new SelectPersoModel(404, R.drawable.ic_launcher_background));
-        results.add(new SelectPersoModel(502, R.drawable.ic_launcher_background));
-        results.add(new SelectPersoModel(540, R.drawable.ic_launcher_background));
-        results.add(new SelectPersoModel(574, R.drawable.ic_launcher_background));
-        results.add(new SelectPersoModel(644, R.drawable.ic_launcher_background));
-        results.add(new SelectPersoModel(650, R.drawable.ic_launcher_background));
-        results.add(new SelectPersoModel(720, R.drawable.ic_launcher_background));
+        results.add(new HeroModel(149, "Captain America", 69, 19, 38, 55, 60, 100,R.drawable.ic_launcher_background,R.drawable.ic_launcher_background,R.drawable.ic_launcher_background, R.drawable.ic_launcher_background));
+        results.add(new HeroModel(176, "Chuck Norris", 50, 80, 47, 56, 42, 99 ,R.drawable.ic_launcher_background,R.drawable.ic_launcher_background,R.drawable.ic_launcher_background, R.drawable.ic_launcher_background));
+        results.add(new HeroModel(208, "Dark Vador", 69, 48, 33, 35, 100, 100,R.drawable.ic_launcher_background,R.drawable.ic_launcher_background,R.drawable.ic_launcher_background, R.drawable.ic_launcher_background));
+        results.add(new HeroModel(213, "Dead Pool",69, 32, 50, 100, 100, 100, R.drawable.ic_launcher_background,R.drawable.ic_launcher_background,R.drawable.ic_launcher_background, R.drawable.ic_launcher_background));
+        results.add(new HeroModel(263, "Flash", 63, 10, 100, 50, 68, 32,R.drawable.ic_launcher_background,R.drawable.ic_launcher_background,R.drawable.ic_launcher_background, R.drawable.ic_launcher_background));
+        results.add(new HeroModel(289, "Goku", 56, 100, 75, 90, 100, 100,R.drawable.ic_launcher_background,R.drawable.ic_launcher_background,R.drawable.ic_launcher_background, R.drawable.ic_launcher_background));
+        results.add(new HeroModel(310, "Harry Potter", 75, 7, 21, 10, 100, 50, R.drawable.ic_launcher_background,R.drawable.ic_launcher_background,R.drawable.ic_launcher_background, R.drawable.ic_launcher_background));
+        results.add(new HeroModel(332, "Hulk", 88, 100, 63, 100, 98, 85, R.drawable.ic_launcher_background,R.drawable.ic_launcher_background,R.drawable.ic_launcher_background, R.drawable.ic_launcher_background));
+        results.add(new HeroModel(346, "Iron Man", 100, 85, 58, 85, 100, 64, R.drawable.ic_launcher_background,R.drawable.ic_launcher_background,R.drawable.ic_launcher_background, R.drawable.ic_launcher_background));
+        results.add(new HeroModel(352, "James Bond", 88, 13, 17, 35, 25, 90, R.drawable.ic_launcher_background,R.drawable.ic_launcher_background,R.drawable.ic_launcher_background, R.drawable.ic_launcher_background));
+        results.add(new HeroModel(370, "Joker", 100, 10, 12, 60, 43, 70, R.drawable.ic_launcher_background,R.drawable.ic_launcher_background,R.drawable.ic_launcher_background, R.drawable.ic_launcher_background));
+        results.add(new HeroModel(373, "Judge Dredd", 75, 18, 38, 50, 52, 95, R.drawable.ic_launcher_background,R.drawable.ic_launcher_background,R.drawable.ic_launcher_background, R.drawable.ic_launcher_background));
+        results.add(new HeroModel(404, "Leonardo", 75, 16, 50, 65, 59, 80, R.drawable.ic_launcher_background,R.drawable.ic_launcher_background,R.drawable.ic_launcher_background, R.drawable.ic_launcher_background));
+        results.add(new HeroModel(502, "Saïtama", 38, 100, 83, 95, 55, 50, R.drawable.ic_launcher_background,R.drawable.ic_launcher_background,R.drawable.ic_launcher_background, R.drawable.ic_launcher_background));
+        results.add(new HeroModel(540, "Rambo", 63, 14, 25, 30, 30, 100, R.drawable.ic_launcher_background,R.drawable.ic_launcher_background,R.drawable.ic_launcher_background, R.drawable.ic_launcher_background));
+        results.add(new HeroModel(574, "Sauron", 88, 85, 33, 100, 100, 70, R.drawable.ic_launcher_background,R.drawable.ic_launcher_background,R.drawable.ic_launcher_background, R.drawable.ic_launcher_background));
+        results.add(new HeroModel(644, "SuperMan", 94, 100, 100, 100, 100, 85, R.drawable.ic_launcher_background,R.drawable.ic_launcher_background,R.drawable.ic_launcher_background, R.drawable.ic_launcher_background));
+        results.add(new HeroModel(650, "T800", 75, 34, 17, 60, 73, 65 ,R.drawable.ic_launcher_background,R.drawable.ic_launcher_background,R.drawable.ic_launcher_background, R.drawable.ic_launcher_background));
+        results.add(new HeroModel(720, "Wonder Woman", 88, 100, 79, 100, 100, 100, R.drawable.ic_launcher_background,R.drawable.ic_launcher_background,R.drawable.ic_launcher_background, R.drawable.ic_launcher_background));
 
 
         SelectPersoAdapter adapter = new SelectPersoAdapter(this, results);
