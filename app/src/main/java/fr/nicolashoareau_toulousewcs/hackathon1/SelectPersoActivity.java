@@ -2,6 +2,7 @@ package fr.nicolashoareau_toulousewcs.hackathon1;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
@@ -25,15 +26,27 @@ public class SelectPersoActivity extends AppCompatActivity {
 
         //TODO : faire les résultats
 
-        results.add(new SelectPersoModel(1, R.drawable.ic_launcher_background));
-        results.add(new SelectPersoModel(2, R.drawable.ic_launcher_background));
-        results.add(new SelectPersoModel(3, R.drawable.ic_launcher_background));
-        results.add(new SelectPersoModel(4, R.drawable.ic_launcher_background));
-        results.add(new SelectPersoModel(5, R.drawable.ic_launcher_background));
-        results.add(new SelectPersoModel(6, R.drawable.ic_launcher_background));
-        results.add(new SelectPersoModel(7, R.drawable.ic_launcher_background));
-        results.add(new SelectPersoModel(8, R.drawable.ic_launcher_background));
-        results.add(new SelectPersoModel(9, R.drawable.ic_launcher_background));
+        results.add(new SelectPersoModel(70, R.drawable.ic_launcher_background));
+        results.add(new SelectPersoModel(149, R.drawable.ic_launcher_background));
+        results.add(new SelectPersoModel(176, R.drawable.ic_launcher_background));
+        results.add(new SelectPersoModel(208, R.drawable.ic_launcher_background));
+        results.add(new SelectPersoModel(213, R.drawable.ic_launcher_background));
+        results.add(new SelectPersoModel(263, R.drawable.ic_launcher_background));
+        results.add(new SelectPersoModel(289, R.drawable.ic_launcher_background));
+        results.add(new SelectPersoModel(310, R.drawable.ic_launcher_background));
+        results.add(new SelectPersoModel(332, R.drawable.ic_launcher_background));
+        results.add(new SelectPersoModel(346, R.drawable.ic_launcher_background));
+        results.add(new SelectPersoModel(352, R.drawable.ic_launcher_background));
+        results.add(new SelectPersoModel(370, R.drawable.ic_launcher_background));
+        results.add(new SelectPersoModel(373, R.drawable.ic_launcher_background));
+        results.add(new SelectPersoModel(404, R.drawable.ic_launcher_background));
+        results.add(new SelectPersoModel(502, R.drawable.ic_launcher_background));
+        results.add(new SelectPersoModel(540, R.drawable.ic_launcher_background));
+        results.add(new SelectPersoModel(574, R.drawable.ic_launcher_background));
+        results.add(new SelectPersoModel(644, R.drawable.ic_launcher_background));
+        results.add(new SelectPersoModel(650, R.drawable.ic_launcher_background));
+        results.add(new SelectPersoModel(720, R.drawable.ic_launcher_background));
+
 
         SelectPersoAdapter adapter = new SelectPersoAdapter(this, results);
         gridview.setAdapter(adapter);
