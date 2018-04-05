@@ -2,10 +2,13 @@ package fr.nicolashoareau_toulousewcs.hackathon1;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.GridView;
+import android.widget.ImageView;
 
 import java.util.ArrayList;
 
@@ -15,16 +18,27 @@ import java.util.ArrayList;
 
 public class SelectPersoActivity extends AppCompatActivity {
 
+    ImageView imgPlayer1;
+    ImageView imgPlayer2;
+    Button boutonSelect;
+    Button boutonFight;
+    int status = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.selection_perso);
 
+        imgPlayer1 = findViewById(R.id.iv_player1);
+        imgPlayer2 = findViewById(R.id.iv_player2);
+        boutonSelect = findViewById(R.id.button_selection);
+        boutonFight = findViewById(R.id.button_fight);
 
         final GridView gridview = (GridView) findViewById(R.id.grid_select_perso);
         ArrayList<HeroModel> results = new ArrayList<>();
 
         //TODO : faire les résultats
+
         results.add(new HeroModel(70, "Batman", 100, 26, 27, 50, 47, 100, R.drawable.ic_launcher_background,R.drawable.ic_launcher_background,R.drawable.ic_launcher_background, R.drawable.ic_launcher_background));
         results.add(new HeroModel(149, "Captain America", 69, 19, 38, 55, 60, 100,R.drawable.ic_launcher_background,R.drawable.ic_launcher_background,R.drawable.ic_launcher_background, R.drawable.ic_launcher_background));
         results.add(new HeroModel(176, "Chuck Norris", 50, 80, 47, 56, 42, 99 ,R.drawable.ic_launcher_background,R.drawable.ic_launcher_background,R.drawable.ic_launcher_background, R.drawable.ic_launcher_background));
@@ -47,16 +61,47 @@ public class SelectPersoActivity extends AppCompatActivity {
 
         SelectPersoAdapter adapter = new SelectPersoAdapter(this, results);
         gridview.setAdapter(adapter);
+        final Intent intent = new Intent(SelectPersoActivity.this, FightActivity.class);
+
 
 
         gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-                HeroModel item = (HeroModel) gridview.getItemAtPosition(position);
-                Intent intent = new Intent(SelectPersoActivity.this, FightActivity.class);
-                int idHero = item.getId();
-                intent.putExtra("idHero",id);
-                SelectPersoActivity.this.startActivity(intent);
+
+                if (status == 0) {
+                    HeroModel item = (HeroModel) gridview.getItemAtPosition(position);
+                    imgPlayer1.setImageResource(item.getIcon());
+                    status++;
+                    Parcelable hero1 = new HeroModel(item.getId(),item.getName(), item.getIntelligence(), item.getStrength(), item.getSpeed(), item.getDurability(), item.getPower(), item.getCombat(), item.getImage1(), item.getImage2(), item.getImage3(), item.getIcon());
+                    intent.putExtra("intenthero1", hero1);
+
+                } else if (status == 1) {
+                    HeroModel item = (HeroModel) gridview.getItemAtPosition(position);
+                    imgPlayer2.setImageResource(item.getIcon());
+                    status++;
+                    Parcelable hero2 = new HeroModel(item.getId(),item.getName(), item.getIntelligence(), item.getStrength(), item.getSpeed(), item.getDurability(), item.getPower(), item.getCombat(), item.getImage1(), item.getImage2(), item.getImage3(), item.getIcon());
+                    gridview.setVisibility(View.GONE);
+                    boutonFight.setVisibility(View.VISIBLE);
+                    intent.putExtra("intenthero2", hero2);
+                }
+            }
+
+        });
+
+        boutonFight.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(intent);
+            }
+        });
+
+        boutonSelect.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                status = 0;
+                gridview.setVisibility(View.VISIBLE);
+                boutonFight.setVisibility(View.GONE);
             }
         });
 

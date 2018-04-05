@@ -1,5 +1,6 @@
 package fr.nicolashoareau_toulousewcs.hackathon1;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Button;
@@ -38,6 +39,17 @@ public class FightActivity  extends AppCompatActivity {
         name2 = findViewById(R.id.textView_name2);
         life1 = findViewById(R.id.progressBar_1);
         life2 = findViewById(R.id.progressBar2);
+
+        Intent intent = getIntent();
+        final HeroModel hero1 = getIntent().getExtras().getParcelable("intenthero1");
+        final HeroModel hero2 = getIntent().getExtras().getParcelable("intenthero2");
+        name1.setText(hero1.getName());
+        name2.setText(hero2.getName());
+        life1.setMax(hero1.getDurability());
+        life1.setProgress(hero1.getDurability());
+        life2.setMax(hero2.getDurability());
+        life2.setProgress(hero2.getDurability());
+
 
     }
 }

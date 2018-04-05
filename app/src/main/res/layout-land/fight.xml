@@ -8,8 +8,9 @@
 
     <ProgressBar
         android:id="@+id/progressBar_1"
+        android:progressDrawable="@drawable/progressbar"
         style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="297dp"
+        android:layout_width="300dp"
         android:layout_height="28dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
@@ -18,9 +19,11 @@
 
     <ProgressBar
         android:id="@+id/progressBar2"
+        android:rotation="180"
+        android:progressDrawable="@drawable/progressbar"
         style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="253dp"
-        android:layout_height="25dp"
+        android:layout_width="300dp"
+        android:layout_height="28dp"
         android:layout_marginEnd="8dp"
         android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -48,8 +51,8 @@
 
     <ImageView
         android:id="@+id/imageView_perso1"
-        android:layout_width="136dp"
-        android:layout_height="168dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
         android:layout_marginBottom="36dp"
         android:layout_marginStart="116dp"
         app:layout_constraintBottom_toTopOf="@+id/button_attSpe"
@@ -58,8 +61,8 @@
 
     <ImageView
         android:id="@+id/imageView_perso2"
-        android:layout_width="117dp"
-        android:layout_height="152dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
         android:layout_marginBottom="116dp"
         android:layout_marginEnd="76dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -68,8 +71,8 @@
 
     <ImageView
         android:id="@+id/imageView_icon1"
-        android:layout_width="36dp"
-        android:layout_height="36dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -78,8 +81,8 @@
 
     <ImageView
         android:id="@+id/imageView_icon2"
-        android:layout_width="46dp"
-        android:layout_height="32dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:layout_marginEnd="8dp"
         android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -98,7 +101,7 @@
 
     <TextView
         android:id="@+id/textView_name2"
-        android:layout_width="63dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
