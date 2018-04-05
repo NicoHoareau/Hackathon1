@@ -33,6 +33,7 @@ public class FightActivity  extends AppCompatActivity {
     TextView name2;
     ProgressBar life1;
     ProgressBar life2;
+    int damage = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,10 +49,18 @@ public class FightActivity  extends AppCompatActivity {
         name2 = findViewById(R.id.textView_name2);
         life1 = findViewById(R.id.progressBar_1);
         life2 = findViewById(R.id.progressBar2);
+        final TextView textTest2 = findViewById(R.id.textView_test2);
+        final TextView textTest1 = findViewById(R.id.textView_test1);
+
+        // préparation combat :
 
         Intent intent = getIntent();
         final HeroModel hero1 = getIntent().getExtras().getParcelable("intenthero1");
         final HeroModel hero2 = getIntent().getExtras().getParcelable("intenthero2");
+        imageperso1.setImageResource(hero1.getImage1());
+        imageperso2.setImageResource(hero2.getImage1());
+        icon1.setImageResource(hero1.getIcon());
+        icon2.setImageResource(hero2.getIcon());
         name1.setText(hero1.getName());
         name2.setText(hero2.getName());
         life1.setMax(hero1.getDurability());
@@ -75,8 +84,89 @@ public class FightActivity  extends AppCompatActivity {
                                      }
                                  }
         );
+        textTest1.setText(hero1.getIntelligence() + " , " + hero1.getStrength() + " , " + hero1.getPower() + " , " + hero1.getCombat() + " , " + hero1.getDurability());
+        textTest2.setText(hero2.getIntelligence() + " , " + hero2.getStrength() + " , " + hero2.getPower() + " , " + hero2.getCombat() + " , " + hero2.getDurability());
+
+        // combat :
 
 
+        //attaque physique
+        boutonAtt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+               damage = hero1.getStrength() - hero2.getCombat();
+                if(damage < 0) {
+                    damage = 0;
+                }
+                hero2.setDurability(hero2.getDurability() - damage);
+                life2.setProgress(hero2.getDurability());
+
+                // contre attaque
+                Random random = new Random();
+                int r = random.nextInt(2);
+                if (r == 0) {
+                    damage = hero2.getStrength() - hero1.getCombat();
+                    if(damage < 0) {
+                        damage = 0;
+                    }
+                    hero1.setDurability(hero1.getDurability() - damage);
+                    life1.setProgress(hero1.getDurability());
+                }
+                else {
+
+                        damage = hero2.getIntelligence() - hero1.getPower();
+                    if(damage < 0) {
+                        damage = 0;
+                    }
+                        hero1.setDurability(hero1.getDurability() - damage);
+                        life1.setProgress(hero1.getDurability());
+
+                }
+                textTest1.setText(hero1.getIntelligence() + " , " + hero1.getStrength() + " , " + hero1.getPower() + " , " + hero1.getCombat() + " , " + hero1.getDurability());
+                textTest2.setText(hero2.getIntelligence() + " , " + hero2.getStrength() + " , " + hero2.getPower() + " , " + hero2.getCombat() + " , " + hero2.getDurability());
+            }
+        });
+
+        // attaque spécial
+        boutonAttSpé.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                damage = hero1.getIntelligence() - hero2.getPower();
+                if(damage < 0) {
+                    damage = 0;
+                }
+                hero2.setDurability(hero2.getDurability() - damage);
+                life2.setProgress(hero2.getDurability());
+
+                //contre attaque spécial
+
+                Random random = new Random();
+                int r = random.nextInt(2);
+                if (r == 0) {
+
+                    damage = hero2.getStrength() - hero1.getCombat();
+                    if(damage < 0) {
+                        damage = 0;
+                    }
+                    hero1.setDurability(hero1.getDurability() - damage);
+                    life1.setProgress(hero1.getDurability());
+                }
+                else {
+
+                        damage = hero2.getIntelligence() - hero1.getPower();
+                    if(damage < 0) {
+                        damage = 0;
+                    }
+                        hero1.setDurability(hero1.getDurability() - damage);
+                        life1.setProgress(hero1.getDurability());
+
+                }
+
+                textTest1.setText(hero1.getIntelligence() + " , " + hero1.getStrength() + " , " + hero1.getPower() + " , " + hero1.getCombat() + " , " + hero1.getDurability());
+                textTest2.setText(hero2.getIntelligence() + " , " + hero2.getStrength() + " , " + hero2.getPower() + " , " + hero2.getCombat() + " , " + hero2.getDurability());
+
+            }
+        });
 
     }
 }
