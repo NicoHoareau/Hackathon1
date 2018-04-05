@@ -9,7 +9,6 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageView;
-
 import java.util.ArrayList;
 
 /**
@@ -23,6 +22,7 @@ public class SelectPersoActivity extends AppCompatActivity {
     Button boutonSelect;
     Button boutonFight;
     int status = 0;
+    Button boutonSelectMap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +33,7 @@ public class SelectPersoActivity extends AppCompatActivity {
         imgPlayer2 = findViewById(R.id.iv_player2);
         boutonSelect = findViewById(R.id.button_selection);
         boutonFight = findViewById(R.id.button_fight);
+        boutonSelectMap = findViewById(R.id.button_arena);
 
         final GridView gridview = (GridView) findViewById(R.id.grid_select_perso);
         ArrayList<HeroModel> results = new ArrayList<>();
@@ -58,12 +59,12 @@ public class SelectPersoActivity extends AppCompatActivity {
         results.add(new HeroModel(574, "Sauron", 88, 85, 33, 100, 100, 70, R.drawable.ic_launcher_background,R.drawable.ic_launcher_background,R.drawable.ic_launcher_background, R.drawable.ic_launcher_background));
         results.add(new HeroModel(644, "SuperMan", 94, 100, 100, 100, 100, 85, R.drawable.ic_launcher_background,R.drawable.ic_launcher_background,R.drawable.ic_launcher_background, R.drawable.ic_launcher_background));
         results.add(new HeroModel(650, "T800", 75, 34, 17, 60, 73, 65 ,R.drawable.ic_launcher_background,R.drawable.ic_launcher_background,R.drawable.ic_launcher_background, R.drawable.ic_launcher_background));
+        results.add(new HeroModel(720, "Wonder Woman", 88, 100, 79, 100, 100, 100, R.drawable.ic_launcher_background,R.drawable.ic_launcher_background,R.drawable.ic_launcher_background, R.drawable.ic_launcher_background));
+       
 
         SelectPersoAdapter adapter = new SelectPersoAdapter(this, results);
         gridview.setAdapter(adapter);
         final Intent intent = new Intent(SelectPersoActivity.this, FightActivity.class);
-
-
 
         gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -71,18 +72,19 @@ public class SelectPersoActivity extends AppCompatActivity {
 
                 if (status == 0) {
                     HeroModel item = (HeroModel) gridview.getItemAtPosition(position);
-                    imgPlayer1.setImageResource(item.getIcon());
+                    imgPlayer1.setImageResource(item.getImage1());
                     status++;
                     Parcelable hero1 = new HeroModel(item.getId(),item.getName(), item.getIntelligence(), item.getStrength(), item.getSpeed(), item.getDurability(), item.getPower(), item.getCombat(), item.getImage1(), item.getImage2(), item.getImage3(), item.getIcon());
                     intent.putExtra("intenthero1", hero1);
 
                 } else if (status == 1) {
                     HeroModel item = (HeroModel) gridview.getItemAtPosition(position);
-                    imgPlayer2.setImageResource(item.getIcon());
+                    imgPlayer2.setImageResource(item.getImage1());
                     status++;
                     Parcelable hero2 = new HeroModel(item.getId(),item.getName(), item.getIntelligence(), item.getStrength(), item.getSpeed(), item.getDurability(), item.getPower(), item.getCombat(), item.getImage1(), item.getImage2(), item.getImage3(), item.getIcon());
                     gridview.setVisibility(View.GONE);
                     boutonFight.setVisibility(View.VISIBLE);
+                    boutonSelectMap.setVisibility(View.GONE);
                     intent.putExtra("intenthero2", hero2);
                 }
             }
@@ -102,8 +104,12 @@ public class SelectPersoActivity extends AppCompatActivity {
                 status = 0;
                 gridview.setVisibility(View.VISIBLE);
                 boutonFight.setVisibility(View.GONE);
+                boutonSelectMap.setVisibility(View.GONE);
             }
         });
+
+
+
 
 
     }
