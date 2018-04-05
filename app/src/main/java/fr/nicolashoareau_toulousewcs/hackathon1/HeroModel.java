@@ -1,10 +1,13 @@
 package fr.nicolashoareau_toulousewcs.hackathon1;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 /**
  * Created by wilder on 05/04/18.
  */
 
-public class HeroModel {
+public class HeroModel implements Parcelable{
     private int id;
     private String name;
     private int intelligence;
@@ -32,6 +35,33 @@ public class HeroModel {
         this.image3 = image3;
         this.icon = icon;
     }
+
+    protected HeroModel(Parcel in) {
+        id = in.readInt();
+        name = in.readString();
+        intelligence = in.readInt();
+        strength = in.readInt();
+        speed = in.readInt();
+        durability = in.readInt();
+        power = in.readInt();
+        combat = in.readInt();
+        image1 = in.readInt();
+        image2 = in.readInt();
+        image3 = in.readInt();
+        icon = in.readInt();
+    }
+
+    public static final Creator<HeroModel> CREATOR = new Creator<HeroModel>() {
+        @Override
+        public HeroModel createFromParcel(Parcel in) {
+            return new HeroModel(in);
+        }
+
+        @Override
+        public HeroModel[] newArray(int size) {
+            return new HeroModel[size];
+        }
+    };
 
     public int getId() {
         return id;
@@ -136,5 +166,24 @@ public class HeroModel {
     }
 
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
 
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeInt(id);
+        parcel.writeString(name);
+        parcel.writeInt(intelligence);
+        parcel.writeInt(strength);
+        parcel.writeInt(speed);
+        parcel.writeInt(durability);
+        parcel.writeInt(power);
+        parcel.writeInt(combat);
+        parcel.writeInt(image1);
+        parcel.writeInt(image2);
+        parcel.writeInt(image3);
+        parcel.writeInt(icon);
+    }
 }
