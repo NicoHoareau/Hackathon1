@@ -37,6 +37,8 @@ public class FightActivity  extends AppCompatActivity {
     TextView résultat;
     Button boutonRevive;
     Button boutonSelection;
+    TextView textFinGame;
+    ImageView imgFinGame;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +57,8 @@ public class FightActivity  extends AppCompatActivity {
         résultat = findViewById(R.id.textView_result);
         boutonRevive = findViewById(R.id.butto_rematch);
         boutonSelection = findViewById(R.id.button_selection);
+        textFinGame = findViewById(R.id.textView_fingame);
+        imgFinGame = findViewById(R.id.imageView_fingame);
 
         final TextView textTest2 = findViewById(R.id.textView_test2);
         final TextView textTest1 = findViewById(R.id.textView_test1);
@@ -115,6 +119,8 @@ public class FightActivity  extends AppCompatActivity {
                 // KO
                 if (hero2.IsKO()) {
                     endgame();
+                    textFinGame.setText(hero1.getName() + " Vainqueur !");
+                    imgFinGame.setImageResource(hero1.getImage1());
                 }
 
                 // contre attaque
@@ -131,6 +137,8 @@ public class FightActivity  extends AppCompatActivity {
                     // KO
                     if (hero1.IsKO()) {
                        endgame();
+                        textFinGame.setText(hero2.getName() + " Vainqueur !");
+                        imgFinGame.setImageResource(hero2.getImage1());
                     }
                 }
                 else {
@@ -145,6 +153,8 @@ public class FightActivity  extends AppCompatActivity {
                     // KO
                     if (hero1.IsKO()) {
                         endgame();
+                        textFinGame.setText(hero2.getName() + " Vainqueur !");
+                        imgFinGame.setImageResource(hero2.getImage1());
                     }
 
                 }
@@ -167,6 +177,8 @@ public class FightActivity  extends AppCompatActivity {
                 // KO
                 if (hero2.IsKO()) {
                     endgame();
+                    textFinGame.setText(hero1.getName() + " Vainqueur !");
+                    imgFinGame.setImageResource(hero1.getImage1());
                 }
 
                 //contre attaque spécial
@@ -185,6 +197,8 @@ public class FightActivity  extends AppCompatActivity {
         // KO
                     if (hero1.IsKO()) {
                        endgame();
+                        textFinGame.setText(hero2.getName() + " Vainqueur !");
+                        imgFinGame.setImageResource(hero2.getImage1());
                     }
                 }
                 else {
@@ -199,6 +213,8 @@ public class FightActivity  extends AppCompatActivity {
   // KO
                     if (hero1.IsKO()) {
                         endgame();
+                        textFinGame.setText(hero2.getName() + " Vainqueur !");
+                        imgFinGame.setImageResource(hero2.getImage1());
                     }
 
                 }
@@ -240,6 +256,8 @@ public class FightActivity  extends AppCompatActivity {
         boutonAttSpé.setEnabled(false);
         boutonRevive.setVisibility(View.VISIBLE);
         boutonSelection.setVisibility(View.VISIBLE);
+        textFinGame.setVisibility(View.VISIBLE);
+        imgFinGame.setVisibility(View.VISIBLE);
     }
 
     public void rematch() {
@@ -247,6 +265,8 @@ public class FightActivity  extends AppCompatActivity {
         boutonAttSpé.setEnabled(true);
         boutonRevive.setVisibility(View.GONE);
         boutonSelection.setVisibility(View.GONE);
+        textFinGame.setVisibility(View.GONE);
+        imgFinGame.setVisibility(View.GONE);
     }
 
     public void retourSelect() {
