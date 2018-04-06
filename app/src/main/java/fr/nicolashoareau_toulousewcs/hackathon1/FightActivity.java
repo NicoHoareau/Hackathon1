@@ -12,6 +12,7 @@ import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
+import android.view.animation.RotateAnimation;
 import android.view.animation.TranslateAnimation;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -97,6 +98,10 @@ public class FightActivity  extends AppCompatActivity {
         final MediaPlayer media1 = MediaPlayer.create(getBaseContext(), R.raw.musiquecombat);
         media1.start();
         media1.setLooping(true);
+        rota(imageperso1);
+        rota2(imageperso2);
+
+
 
 
 
@@ -158,6 +163,8 @@ public class FightActivity  extends AppCompatActivity {
                     hero2.setDurability(realLife2);
                     life2.setProgress(realLife2);
                     rematch();
+                    rota(imageperso1);
+                    rota2(imageperso2);
                 }
             });
 
@@ -181,6 +188,7 @@ public class FightActivity  extends AppCompatActivity {
                         boutonAtt.setEnabled(false);
                         boutonAttSpé.setEnabled(false);
                         moveViewToScreenCenter(imageperso1);
+
 
                         // KO
                         if (hero2.IsKO()) {
@@ -652,6 +660,18 @@ public class FightActivity  extends AppCompatActivity {
         anim2.setDuration(1000);
         anim2.setFillAfter( true );
         view.startAnimation(anim2);
+        CountDownTimer countanim = new CountDownTimer(1000, 100) {
+            @Override
+            public void onTick(long l) {
+            }
+
+            @Override
+            public void onFinish() {
+                rota(imageperso1);
+                rota2(imageperso2);
+            }
+        };
+        countanim.start();
     }
 
     private void moveViewToScreenCenter2( View view )
@@ -674,6 +694,18 @@ public class FightActivity  extends AppCompatActivity {
         anim2.setDuration(1000);
         anim2.setFillAfter( true );
         view.startAnimation(anim2);
+        CountDownTimer countanim = new CountDownTimer(1000, 100) {
+            @Override
+            public void onTick(long l) {
+            }
+
+            @Override
+            public void onFinish() {
+                rota(imageperso1);
+                rota2(imageperso2);
+            }
+        };
+        countanim.start();
     }
     public void animeffect(final ImageView imageeffect){
         MediaPlayer mediapunch = MediaPlayer.create(getBaseContext(), R.raw.coupphysique);
@@ -695,6 +727,47 @@ public class FightActivity  extends AppCompatActivity {
             }
         };
         count.start();
+        CountDownTimer countanim = new CountDownTimer(1000, 100) {
+            @Override
+            public void onTick(long l) {
+            }
+
+            @Override
+            public void onFinish() {
+                rota(imageperso1);
+                rota2(imageperso2);
+            }
+        };
+        countanim.start();
+
+    }
+
+
+    private void rota ( View view )
+    {
+
+        RotateAnimation anim = new RotateAnimation( 2, -2, 0, 0 );
+        int originalPos[] = new int[2];
+        view.getLocationOnScreen( originalPos );
+        anim.setDuration(500);
+        anim.setFillAfter( true );
+        anim.setRepeatMode(Animation.REVERSE);
+        anim.setRepeatCount(100);
+        view.startAnimation(anim);
+
+    }
+
+    private void rota2 ( View view )
+    {
+
+        RotateAnimation anim = new RotateAnimation( -2, 2, 0, 0 );
+        int originalPos[] = new int[2];
+        view.getLocationOnScreen( originalPos );
+        anim.setDuration(500);
+        anim.setFillAfter( true );
+        anim.setRepeatMode(Animation.REVERSE);
+        anim.setRepeatCount(100);
+        view.startAnimation(anim);
 
     }
 
