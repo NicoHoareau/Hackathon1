@@ -79,10 +79,10 @@ public class FightActivity  extends AppCompatActivity {
         life2.setProgress(hero2.getDurability());
         life2.setSecondaryProgress(hero2.getDurability());
 
+
+        // Préparation Arene
         final int[] photos={R.drawable.gifview1firehouse, R.drawable.gifview2rainkioske,R.drawable.gifview3cascadegif, R.drawable.dark_temple};
-
         final GifImageView gifImageView = findViewById(R.id.gif_iv);
-
         final Random ran =new Random();
         final int i = ran.nextInt(photos.length);
         gifImageView.setImageResource(photos[i]);
