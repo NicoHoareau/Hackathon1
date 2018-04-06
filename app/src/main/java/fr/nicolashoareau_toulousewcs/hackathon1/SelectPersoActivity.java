@@ -23,6 +23,8 @@ public class SelectPersoActivity extends AppCompatActivity {
     ImageView boutonSelect;
     ImageView boutonFight;
     int status = 0;
+    ImageView boutonReturn;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,6 +34,7 @@ public class SelectPersoActivity extends AppCompatActivity {
         imgPlayer2 = findViewById(R.id.iv_player2);
         boutonSelect = findViewById(R.id.button_selection);
         boutonFight = findViewById(R.id.button_fight);
+        boutonReturn = findViewById(R.id.button_return_menu);
 
         Intent intentRecep = getIntent();
         final int val = intentRecep.getIntExtra("val", 0);
@@ -119,6 +122,14 @@ public class SelectPersoActivity extends AppCompatActivity {
                 status = 0;
                 gridview.setVisibility(View.VISIBLE);
                 boutonFight.setVisibility(View.GONE);
+            }
+        });
+
+        boutonReturn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent returnMenu = new Intent(SelectPersoActivity.this, SelectModeFightActivity.class);
+                SelectPersoActivity.this.startActivity(returnMenu);
             }
         });
 
