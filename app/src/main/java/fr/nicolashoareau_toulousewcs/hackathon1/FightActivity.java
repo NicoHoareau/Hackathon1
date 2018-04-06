@@ -28,6 +28,9 @@ public class FightActivity  extends AppCompatActivity {
     ProgressBar life1;
     ProgressBar life2;
     int damage = 0;
+    TextView résultat;
+    Button boutonRevive;
+    Button boutonSelection;
 
 
 
@@ -45,6 +48,10 @@ public class FightActivity  extends AppCompatActivity {
         name2 = findViewById(R.id.textView_name2);
         life1 = findViewById(R.id.progressBar_1);
         life2 = findViewById(R.id.progressBar2);
+        résultat = findViewById(R.id.textView_result);
+        boutonRevive = findViewById(R.id.butto_rematch);
+        boutonSelection = findViewById(R.id.button_selection);
+
         final TextView textTest2 = findViewById(R.id.textView_test2);
         final TextView textTest1 = findViewById(R.id.textView_test1);
 
@@ -52,7 +59,9 @@ public class FightActivity  extends AppCompatActivity {
 
         Intent intent = getIntent();
         final HeroModel hero1 = getIntent().getExtras().getParcelable("intenthero1");
+        final int realLife1 = hero1.getDurability();
         final HeroModel hero2 = getIntent().getExtras().getParcelable("intenthero2");
+        final int realLife2 = hero2.getDurability();
         imageperso1.setImageResource(hero1.getImage1());
         imageperso2.setImageResource(hero2.getImage1());
         icon1.setImageResource(hero1.getIcon());
@@ -61,8 +70,10 @@ public class FightActivity  extends AppCompatActivity {
         name2.setText(hero2.getName());
         life1.setMax(hero1.getDurability());
         life1.setProgress(hero1.getDurability());
+        life1.setSecondaryProgress(hero1.getDurability());
         life2.setMax(hero2.getDurability());
         life2.setProgress(hero2.getDurability());
+        life2.setSecondaryProgress(hero2.getDurability());
 
         textTest1.setText(hero1.getIntelligence() + " , " + hero1.getStrength() + " , " + hero1.getPower() + " , " + hero1.getCombat() + " , " + hero1.getDurability());
         textTest2.setText(hero2.getIntelligence() + " , " + hero2.getStrength() + " , " + hero2.getPower() + " , " + hero2.getCombat() + " , " + hero2.getDurability());
@@ -81,6 +92,11 @@ public class FightActivity  extends AppCompatActivity {
                 hero2.setDurability(hero2.getDurability() - damage);
                 life2.setProgress(hero2.getDurability());
 
+                // KO
+                if (hero2.IsKO()) {
+                    endgame();
+                }
+
                 // contre attaque
                 Random random = new Random();
                 int r = random.nextInt(2);
@@ -91,6 +107,11 @@ public class FightActivity  extends AppCompatActivity {
                     }
                     hero1.setDurability(hero1.getDurability() - damage);
                     life1.setProgress(hero1.getDurability());
+
+                    // KO
+                    if (hero1.IsKO()) {
+                       endgame();
+                    }
                 }
                 else {
 
@@ -100,6 +121,11 @@ public class FightActivity  extends AppCompatActivity {
                     }
                         hero1.setDurability(hero1.getDurability() - damage);
                         life1.setProgress(hero1.getDurability());
+
+                    // KO
+                    if (hero1.IsKO()) {
+                        endgame();
+                    }
 
                 }
                 textTest1.setText(hero1.getIntelligence() + " , " + hero1.getStrength() + " , " + hero1.getPower() + " , " + hero1.getCombat() + " , " + hero1.getDurability());
@@ -118,6 +144,11 @@ public class FightActivity  extends AppCompatActivity {
                 hero2.setDurability(hero2.getDurability() - damage);
                 life2.setProgress(hero2.getDurability());
 
+                // KO
+                if (hero2.IsKO()) {
+                    endgame();
+                }
+
                 //contre attaque spécial
 
                 Random random = new Random();
@@ -130,6 +161,11 @@ public class FightActivity  extends AppCompatActivity {
                     }
                     hero1.setDurability(hero1.getDurability() - damage);
                     life1.setProgress(hero1.getDurability());
+
+        // KO
+                    if (hero1.IsKO()) {
+                       endgame();
+                    }
                 }
                 else {
 
@@ -140,6 +176,11 @@ public class FightActivity  extends AppCompatActivity {
                         hero1.setDurability(hero1.getDurability() - damage);
                         life1.setProgress(hero1.getDurability());
 
+  // KO
+                    if (hero1.IsKO()) {
+                        endgame();
+                    }
+
                 }
 
                 textTest1.setText(hero1.getIntelligence() + " , " + hero1.getStrength() + " , " + hero1.getPower() + " , " + hero1.getCombat() + " , " + hero1.getDurability());
@@ -148,8 +189,47 @@ public class FightActivity  extends AppCompatActivity {
             }
         });
 
+        // Fin de Match :
+
+        boutonSelection.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                retourSelect();
+            }
+        });
+
+        boutonRevive.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                hero1.setDurability(realLife1);
+                life1.setProgress(realLife1);
+                hero2.setDurability(realLife2);
+                life2.setProgress(realLife2);
+                rematch();
+            }
+        });
+
+    }
 
 
+    // Methode :
 
+    public void endgame() {
+        boutonAtt.setEnabled(false);
+        boutonAttSpé.setEnabled(false);
+        boutonRevive.setVisibility(View.VISIBLE);
+        boutonSelection.setVisibility(View.VISIBLE);
+    }
+
+    public void rematch() {
+        boutonAtt.setEnabled(true);
+        boutonAttSpé.setEnabled(true);
+        boutonRevive.setVisibility(View.GONE);
+        boutonSelection.setVisibility(View.GONE);
+    }
+
+    public void retourSelect() {
+        Intent intent = new Intent(FightActivity.this, SelectPersoActivity.class);
+        startActivity(intent);
     }
 }
