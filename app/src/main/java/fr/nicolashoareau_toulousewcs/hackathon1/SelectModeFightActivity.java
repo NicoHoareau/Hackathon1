@@ -20,6 +20,10 @@ public class SelectModeFightActivity extends AppCompatActivity {
         boutonP1vsP2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent = new Intent(SelectModeFightActivity.this, SelectPersoActivity.class);
+                int val = 1;
+                intent.putExtra("val", val);
+                startActivity(intent);
 
             }
         });
@@ -28,7 +32,10 @@ public class SelectModeFightActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(SelectModeFightActivity.this, SelectPersoActivity.class);
-                SelectModeFightActivity.this.startActivity(intent);
+                int val = 0;
+                intent.putExtra("val", val);
+                startActivity(intent);
+
 
             }
         });

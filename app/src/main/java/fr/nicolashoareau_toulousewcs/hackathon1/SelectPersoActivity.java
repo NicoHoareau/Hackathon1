@@ -34,6 +34,8 @@ public class SelectPersoActivity extends AppCompatActivity {
         boutonSelect = findViewById(R.id.button_selection);
         boutonFight = findViewById(R.id.button_fight);
         boutonSelectMap = findViewById(R.id.button_arena);
+        Intent intentRecep = getIntent();
+        final int val = intentRecep.getIntExtra("val", 0);
 
         final GridView gridview = (GridView) findViewById(R.id.grid_select_perso);
         ArrayList<HeroModel> results = new ArrayList<>();
@@ -76,6 +78,7 @@ public class SelectPersoActivity extends AppCompatActivity {
                     status++;
                     Parcelable hero1 = new HeroModel(item.getId(),item.getName(), item.getIntelligence(), item.getStrength(), item.getSpeed(), item.getDurability(), item.getPower(), item.getCombat(), item.getImage1(), item.getImage2(), item.getImage3(), item.getIcon());
                     intent.putExtra("intenthero1", hero1);
+                    intent.putExtra("valfinal", val);
 
                 } else if (status == 1) {
                     HeroModel item = (HeroModel) gridview.getItemAtPosition(position);
@@ -86,6 +89,7 @@ public class SelectPersoActivity extends AppCompatActivity {
                     boutonFight.setVisibility(View.VISIBLE);
                     boutonSelectMap.setVisibility(View.GONE);
                     intent.putExtra("intenthero2", hero2);
+                    intent.putExtra("valfinal", val);
                 }
             }
 
