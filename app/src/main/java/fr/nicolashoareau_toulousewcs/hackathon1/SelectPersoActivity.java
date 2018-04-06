@@ -56,7 +56,7 @@ public class SelectPersoActivity extends AppCompatActivity {
         results.add(new HeroModel(370, "Joker", 100, 10, 12, 60, 43, 70, R.drawable.img370_1,R.drawable.ic_launcher_background,R.drawable.ic_launcher_background, R.drawable.img370_icon));
         results.add(new HeroModel(373, "Judge Dredd", 75, 18, 38, 50, 52, 95, R.drawable.img373_1,R.drawable.ic_launcher_background,R.drawable.ic_launcher_background, R.drawable.img373_icon));
         results.add(new HeroModel(404, "Leonardo", 75, 16, 50, 65, 59, 80, R.drawable.img404_1,R.drawable.ic_launcher_background,R.drawable.ic_launcher_background, R.drawable.img404_icon));
-        results.add(new HeroModel(502, "Saïtama", 38, 100, 83, 95, 55, 50, R.drawable.img502_1,R.drawable.ic_launcher_background,R.drawable.ic_launcher_background, R.drawable.img502_icon));
+        results.add(new HeroModel(502, "Saïtama", 38, 100000, 83, 95, 1000, 1000, R.drawable.img502_1,R.drawable.ic_launcher_background,R.drawable.ic_launcher_background, R.drawable.img502_icon));
         results.add(new HeroModel(540, "Rambo", 63, 14, 25, 30, 30, 100, R.drawable.img540_1,R.drawable.ic_launcher_background,R.drawable.ic_launcher_background, R.drawable.img540_icon));
         results.add(new HeroModel(574, "Sauron", 88, 85, 33, 100, 100, 70, R.drawable.img574_1,R.drawable.ic_launcher_background,R.drawable.ic_launcher_background, R.drawable.img574_icon));
         results.add(new HeroModel(644, "SuperMan", 94, 100, 100, 100, 100, 85, R.drawable.img644_1,R.drawable.ic_launcher_background,R.drawable.ic_launcher_background, R.drawable.img644_icon));

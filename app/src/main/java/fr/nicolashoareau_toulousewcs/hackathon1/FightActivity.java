@@ -77,7 +77,7 @@ public class FightActivity  extends AppCompatActivity {
         // préparation combat :
 
         Intent intent = getIntent();
-        int type = intent.getIntExtra("valfinal", 0);
+        final int type = intent.getIntExtra("valfinal", 0);
         final HeroModel hero1 = getIntent().getExtras().getParcelable("intenthero1");
         final int realLife1 = hero1.getDurability();
         final HeroModel hero2 = getIntent().getExtras().getParcelable("intenthero2");
@@ -119,196 +119,88 @@ public class FightActivity  extends AppCompatActivity {
 
         // combat :
 
+        if (hero1.getId() == 176 || hero2.getId()== 176){
+            if((hero1.getId() == 176 || hero1.getId() == 502) &&(hero2.getId() == 176 || hero2.getId() == 502)){
+                boutonAtt.setEnabled(false);
+                boutonAttSpé.setEnabled(false);
+                textFinGame.setText("égalité");
+                endgame2();
+            }
+            else if (hero1.getId() == 176){
+                boutonAtt.setEnabled(false);
+                boutonAttSpé.setEnabled(false);
+                textFinGame.setText(hero1.getName() + " Vainqueur !");
+                imgFinGame.setImageResource(hero1.getImage1());
+                endgame2();
+            }
+            else if (hero2.getId() == 176){
+                textFinGame.setText(hero2.getName() + " Vainqueur !");
+                imgFinGame.setImageResource(hero2.getImage2());
+                endgame2();
+            }
 
-        if (type == 0) {
-            //attaque physique
-            boutonAtt.setOnClickListener(new View.OnClickListener() {
+            boutonSelection.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    damage = hero1.getStrength() - hero2.getCombat();
-                    if (damage < 0) {
-                        damage = 0;
-                    }
-                    hero2.setDurability(hero2.getDurability() - damage);
-                    life2.setProgress(hero2.getDurability());
-                    impact(impact2, imageperso2);
-
-                    // KO
-                    if (hero2.IsKO()) {
-                        endgame();
-                        textFinGame.setText(hero1.getName() + " Vainqueur !");
-                        imgFinGame.setImageResource(hero1.getImage1());
-                    }
-
-                    CountDownTimer contreAttaque = new CountDownTimer(1000, 1000) {
-                        @Override
-                        public void onTick(long l) {
-                        }
-
-                        @Override
-                        public void onFinish() {
-
-                            // contre attaque
-                            Random random = new Random();
-                            int r = random.nextInt(2);
-                            if (r == 0) {
-                                damage = hero2.getStrength() - hero1.getCombat();
-                                if (damage < 0) {
-                                    damage = 0;
-                                }
-                                hero1.setDurability(hero1.getDurability() - damage);
-                                life1.setProgress(hero1.getDurability());
-                                impact(impact1, imageperso1);
-
-                                // KO
-                                if (hero1.IsKO()) {
-                                    endgame();
-                                    textFinGame.setText(hero2.getName() + " Vainqueur !");
-                                    imgFinGame.setImageResource(hero2.getImage1());
-                                }
-                            } else {
-
-                                damage = hero2.getIntelligence() - hero1.getPower();
-                                if (damage < 0) {
-                                    damage = 0;
-                                }
-                                hero1.setDurability(hero1.getDurability() - damage);
-                                life1.setProgress(hero1.getDurability());
-                                impact(impact1, imageperso1);
-
-                                // KO
-                                if (hero1.IsKO()) {
-                                    endgame();
-                                    textFinGame.setText(hero2.getName() + " Vainqueur !");
-                                    imgFinGame.setImageResource(hero2.getImage1());
-                                }
-
-                            }
-                        }
-                    };
-                    contreAttaque.start();
-                    textTest1.setText(hero1.getIntelligence() + " , " + hero1.getStrength() + " , " + hero1.getPower() + " , " + hero1.getCombat() + " , " + hero1.getDurability());
-                    textTest2.setText(hero2.getIntelligence() + " , " + hero2.getStrength() + " , " + hero2.getPower() + " , " + hero2.getCombat() + " , " + hero2.getDurability());
+                    Intent intent = new Intent(FightActivity.this, SelectPersoActivity.class);
+                    intent.putExtra("val", type);
+                    startActivity(intent);
                 }
             });
 
-            // attaque spécial
-            boutonAttSpé.setOnClickListener(new View.OnClickListener() {
+            boutonRevive.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    damage = hero1.getIntelligence() - hero2.getPower();
-                    if (damage < 0) {
-                        damage = 0;
-                    }
-                    hero2.setDurability(hero2.getDurability() - damage);
-                    life2.setProgress(hero2.getDurability());
-                    impact(impact2, imageperso2);
-
-                    // KO
-                    if (hero2.IsKO()) {
-                        endgame();
-                        textFinGame.setText(hero1.getName() + " Vainqueur !");
-                        imgFinGame.setImageResource(hero1.getImage1());
-                    }
-
-                    //contre attaque spécial
-
-                    CountDownTimer contreAttaque = new CountDownTimer(1000, 1000) {
-                        @Override
-                        public void onTick(long l) {
-                        }
-
-                        @Override
-                        public void onFinish() {
-
-                            // contre attaque
-                            Random random = new Random();
-                            int r = random.nextInt(2);
-                            if (r == 0) {
-                                damage = hero2.getStrength() - hero1.getCombat();
-                                if (damage < 0) {
-                                    damage = 0;
-                                }
-                                hero1.setDurability(hero1.getDurability() - damage);
-                                life1.setProgress(hero1.getDurability());
-                                impact(impact1, imageperso1);
-
-                                // KO
-                                if (hero1.IsKO()) {
-                                    endgame();
-                                    textFinGame.setText(hero2.getName() + " Vainqueur !");
-                                    imgFinGame.setImageResource(hero2.getImage1());
-                                }
-                            } else {
-
-                                damage = hero2.getIntelligence() - hero1.getPower();
-                                if (damage < 0) {
-                                    damage = 0;
-                                }
-                                hero1.setDurability(hero1.getDurability() - damage);
-                                life1.setProgress(hero1.getDurability());
-                                impact(impact1, imageperso1);
-
-                                // KO
-                                if (hero1.IsKO()) {
-                                    endgame();
-                                    textFinGame.setText(hero2.getName() + " Vainqueur !");
-                                    imgFinGame.setImageResource(hero2.getImage1());
-                                }
-
-                            }
-                        }
-                    };
-                    contreAttaque.start();
-
-                    textTest1.setText(hero1.getIntelligence() + " , " + hero1.getStrength() + " , " + hero1.getPower() + " , " + hero1.getCombat() + " , " + hero1.getDurability());
-                    textTest2.setText(hero2.getIntelligence() + " , " + hero2.getStrength() + " , " + hero2.getPower() + " , " + hero2.getCombat() + " , " + hero2.getDurability());
-
+                    hero1.setDurability(realLife1);
+                    life1.setProgress(realLife1);
+                    hero2.setDurability(realLife2);
+                    life2.setProgress(realLife2);
+                    rematch();
                 }
             });
 
         }
 
-
-        // P1 VS P2
         else {
-            boutonAtt2.setVisibility(View.VISIBLE);
-            boutonAttSpé2.setVisibility(View.VISIBLE);
-            boutonAtt2.setEnabled(false);
-            boutonAttSpé2.setEnabled(false);
+            if (type == 0) {
+                // P1 VS CPU
 
-            boutonAtt.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    damage = hero1.getStrength() - hero2.getCombat();
-                    if (damage < 0) {
-                        damage = 0;
-                    }
-                    hero2.setDurability(hero2.getDurability() - damage);
-                    life2.setProgress(hero2.getDurability());
-                    impact(impact2, imageperso2);
-                    boutonAtt.setEnabled(false);
-                    boutonAttSpé.setEnabled(false);
-
-                    // KO
-                    if (hero2.IsKO()) {
-                        endgame();
-                        textFinGame.setText(hero1.getName() + " Vainqueur !");
-                        imgFinGame.setImageResource(hero1.getImage1());
-
-                    }
-                    CountDownTimer contreAttaque = new CountDownTimer(1000, 1000) {
-                        @Override
-                        public void onTick(long l) {
+                //attaque physique
+                boutonAtt.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        damage = hero1.getStrength() - hero2.getCombat();
+                        if (damage < 0) {
+                            damage = 0;
                         }
-                        @Override
-                        public void onFinish() {
-                            boutonAtt2.setEnabled(true);
-                            boutonAttSpé2.setEnabled(true);
+                        hero2.setDurability(hero2.getDurability() - damage);
+                        life2.setProgress(hero2.getDurability());
+                        impact(impact2, imageperso2);
+                        boutonAtt.setEnabled(false);
+                        boutonAttSpé.setEnabled(false);
 
-                            boutonAtt2.setOnClickListener(new View.OnClickListener() {
-                                @Override
-                                public void onClick(View view) {
+                        // KO
+                        if (hero2.IsKO()) {
+                            endgame();
+                            textFinGame.setText(hero1.getName() + " Vainqueur !");
+                            imgFinGame.setImageResource(hero1.getImage1());
+                        }
+
+                        CountDownTimer contreAttaque = new CountDownTimer(1000, 1000) {
+                            @Override
+                            public void onTick(long l) {
+                            }
+
+                            @Override
+                            public void onFinish() {
+
+                                // contre attaque
+                                life2.setSecondaryProgress(hero2.getDurability());
+                                boutonAtt.setEnabled(true);
+                                boutonAttSpé.setEnabled(true);
+                                Random random = new Random();
+                                int r = random.nextInt(2);
+                                if (r == 0) {
                                     damage = hero2.getStrength() - hero1.getCombat();
                                     if (damage < 0) {
                                         damage = 0;
@@ -316,8 +208,6 @@ public class FightActivity  extends AppCompatActivity {
                                     hero1.setDurability(hero1.getDurability() - damage);
                                     life1.setProgress(hero1.getDurability());
                                     impact(impact1, imageperso1);
-                                    boutonAtt2.setEnabled(false);
-                                    boutonAttSpé2.setEnabled(false);
 
                                     // KO
                                     if (hero1.IsKO()) {
@@ -325,22 +215,8 @@ public class FightActivity  extends AppCompatActivity {
                                         textFinGame.setText(hero2.getName() + " Vainqueur !");
                                         imgFinGame.setImageResource(hero2.getImage1());
                                     }
-                                    CountDownTimer attaqueP1 = new CountDownTimer(1000, 1000) {
-                                        @Override
-                                        public void onTick(long l) {
-                                        }
-                                        @Override
-                                        public void onFinish() {
-                                            boutonAtt.setEnabled(true);
-                                            boutonAttSpé.setEnabled(true);
-                                        }
-                                    };
-                                    attaqueP1.start();
-                                }
-                            });
-                            boutonAttSpé2.setOnClickListener(new View.OnClickListener() {
-                                @Override
-                                public void onClick(View view) {
+                                } else {
+
                                     damage = hero2.getIntelligence() - hero1.getPower();
                                     if (damage < 0) {
                                         damage = 0;
@@ -348,8 +224,6 @@ public class FightActivity  extends AppCompatActivity {
                                     hero1.setDurability(hero1.getDurability() - damage);
                                     life1.setProgress(hero1.getDurability());
                                     impact(impact1, imageperso1);
-                                    boutonAtt2.setEnabled(false);
-                                    boutonAttSpé2.setEnabled(false);
 
                                     // KO
                                     if (hero1.IsKO()) {
@@ -357,58 +231,54 @@ public class FightActivity  extends AppCompatActivity {
                                         textFinGame.setText(hero2.getName() + " Vainqueur !");
                                         imgFinGame.setImageResource(hero2.getImage1());
                                     }
-                                    CountDownTimer attaqueP1 = new CountDownTimer(1000, 1000) {
-                                        @Override
-                                        public void onTick(long l) {
-                                        }
-                                        @Override
-                                        public void onFinish() {
-                                            boutonAtt.setEnabled(true);
-                                            boutonAttSpé.setEnabled(true);
-                                        }
-                                    };
-                                    attaqueP1.start();
 
                                 }
-                            });
-
-                        }
-                    };
-                    contreAttaque.start();
-                }
-            });
-
-            boutonAttSpé.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    damage = hero1.getIntelligence() - hero2.getPower();
-                    if (damage < 0) {
-                        damage = 0;
+                            }
+                        };
+                        contreAttaque.start();
+                        textTest1.setText(hero1.getIntelligence() + " , " + hero1.getStrength() + " , " + hero1.getPower() + " , " + hero1.getCombat() + " , " + hero1.getDurability());
+                        textTest2.setText(hero2.getIntelligence() + " , " + hero2.getStrength() + " , " + hero2.getPower() + " , " + hero2.getCombat() + " , " + hero2.getDurability());
                     }
-                    hero2.setDurability(hero2.getDurability() - damage);
-                    life2.setProgress(hero2.getDurability());
-                    impact(impact2, imageperso2);
-                    boutonAtt.setEnabled(false);
-                    boutonAttSpé.setEnabled(false);
+                });
 
-                    // KO
-                    if (hero2.IsKO()) {
-                        endgame();
-                        textFinGame.setText(hero1.getName() + " Vainqueur !");
-                        imgFinGame.setImageResource(hero1.getImage1());
-                    }
-                    CountDownTimer contreAttaque = new CountDownTimer(1000, 1000) {
-                        @Override
-                        public void onTick(long l) {
+                // attaque spécial
+                boutonAttSpé.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        damage = hero1.getIntelligence() - hero2.getPower();
+                        if (damage < 0) {
+                            damage = 0;
                         }
-                        @Override
-                        public void onFinish() {
-                            boutonAtt2.setEnabled(true);
-                            boutonAttSpé2.setEnabled(true);
+                        hero2.setDurability(hero2.getDurability() - damage);
+                        life2.setProgress(hero2.getDurability());
+                        impact(impact2, imageperso2);
+                        boutonAtt.setEnabled(false);
+                        boutonAttSpé.setEnabled(false);
 
-                            boutonAtt2.setOnClickListener(new View.OnClickListener() {
-                                @Override
-                                public void onClick(View view) {
+                        // KO
+                        if (hero2.IsKO()) {
+                            endgame();
+                            textFinGame.setText(hero1.getName() + " Vainqueur !");
+                            imgFinGame.setImageResource(hero1.getImage1());
+                        }
+
+                        //contre attaque spécial
+
+                        CountDownTimer contreAttaque = new CountDownTimer(1000, 1000) {
+                            @Override
+                            public void onTick(long l) {
+                            }
+
+                            @Override
+                            public void onFinish() {
+
+                                // contre attaque
+                                life2.setSecondaryProgress(hero2.getDurability());
+                                boutonAtt.setEnabled(true);
+                                boutonAttSpé.setEnabled(true);
+                                Random random = new Random();
+                                int r = random.nextInt(2);
+                                if (r == 0) {
                                     damage = hero2.getStrength() - hero1.getCombat();
                                     if (damage < 0) {
                                         damage = 0;
@@ -416,8 +286,6 @@ public class FightActivity  extends AppCompatActivity {
                                     hero1.setDurability(hero1.getDurability() - damage);
                                     life1.setProgress(hero1.getDurability());
                                     impact(impact1, imageperso1);
-                                    boutonAtt2.setEnabled(false);
-                                    boutonAttSpé2.setEnabled(false);
 
                                     // KO
                                     if (hero1.IsKO()) {
@@ -425,22 +293,8 @@ public class FightActivity  extends AppCompatActivity {
                                         textFinGame.setText(hero2.getName() + " Vainqueur !");
                                         imgFinGame.setImageResource(hero2.getImage1());
                                     }
-                                    CountDownTimer attaqueP1 = new CountDownTimer(1000, 1000) {
-                                        @Override
-                                        public void onTick(long l) {
-                                        }
-                                        @Override
-                                        public void onFinish() {
-                                            boutonAtt.setEnabled(true);
-                                            boutonAttSpé.setEnabled(true);
-                                        }
-                                    };
-                                    attaqueP1.start();
-                                }
-                            });
-                            boutonAttSpé2.setOnClickListener(new View.OnClickListener() {
-                                @Override
-                                public void onClick(View view) {
+                                } else {
+
                                     damage = hero2.getIntelligence() - hero1.getPower();
                                     if (damage < 0) {
                                         damage = 0;
@@ -448,8 +302,6 @@ public class FightActivity  extends AppCompatActivity {
                                     hero1.setDurability(hero1.getDurability() - damage);
                                     life1.setProgress(hero1.getDurability());
                                     impact(impact1, imageperso1);
-                                    boutonAtt2.setEnabled(false);
-                                    boutonAttSpé2.setEnabled(false);
 
                                     // KO
                                     if (hero1.IsKO()) {
@@ -457,54 +309,268 @@ public class FightActivity  extends AppCompatActivity {
                                         textFinGame.setText(hero2.getName() + " Vainqueur !");
                                         imgFinGame.setImageResource(hero2.getImage1());
                                     }
-                                    CountDownTimer attaqueP1 = new CountDownTimer(1000, 1000) {
-                                        @Override
-                                        public void onTick(long l) {
-                                        }
-                                        @Override
-                                        public void onFinish() {
-                                            boutonAtt.setEnabled(true);
-                                            boutonAttSpé.setEnabled(true);
-                                        }
-                                    };
-                                    attaqueP1.start();
 
                                 }
-                            });
+                            }
+                        };
+                        contreAttaque.start();
+
+                        textTest1.setText(hero1.getIntelligence() + " , " + hero1.getStrength() + " , " + hero1.getPower() + " , " + hero1.getCombat() + " , " + hero1.getDurability());
+                        textTest2.setText(hero2.getIntelligence() + " , " + hero2.getStrength() + " , " + hero2.getPower() + " , " + hero2.getCombat() + " , " + hero2.getDurability());
+
+                    }
+                });
+
+            }
+
+
+            // P1 VS P2
+            else {
+                boutonAtt2.setVisibility(View.VISIBLE);
+                boutonAttSpé2.setVisibility(View.VISIBLE);
+                boutonAtt2.setEnabled(false);
+                boutonAttSpé2.setEnabled(false);
+
+                boutonAtt.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        damage = hero1.getStrength() - hero2.getCombat();
+                        if (damage < 0) {
+                            damage = 0;
+                        }
+                        hero2.setDurability(hero2.getDurability() - damage);
+                        life2.setProgress(hero2.getDurability());
+                        impact(impact2, imageperso2);
+                        boutonAtt.setEnabled(false);
+                        boutonAttSpé.setEnabled(false);
+
+                        // KO
+                        if (hero2.IsKO()) {
+                            endgame();
+                            textFinGame.setText(hero1.getName() + " Vainqueur !");
+                            imgFinGame.setImageResource(hero1.getImage1());
 
                         }
-                    };
-                    contreAttaque.start();
+                        CountDownTimer contreAttaque = new CountDownTimer(1000, 1000) {
+                            @Override
+                            public void onTick(long l) {
+                            }
 
+                            @Override
+                            public void onFinish() {
+                                boutonAtt2.setEnabled(true);
+                                boutonAttSpé2.setEnabled(true);
+                                life2.setSecondaryProgress(hero2.getDurability());
+
+                                boutonAtt2.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View view) {
+                                        damage = hero2.getStrength() - hero1.getCombat();
+                                        if (damage < 0) {
+                                            damage = 0;
+                                        }
+                                        hero1.setDurability(hero1.getDurability() - damage);
+                                        life1.setProgress(hero1.getDurability());
+                                        impact(impact1, imageperso1);
+                                        boutonAtt2.setEnabled(false);
+                                        boutonAttSpé2.setEnabled(false);
+
+                                        // KO
+                                        if (hero1.IsKO()) {
+                                            endgame();
+                                            textFinGame.setText(hero2.getName() + " Vainqueur !");
+                                            imgFinGame.setImageResource(hero2.getImage1());
+                                        }
+                                        CountDownTimer attaqueP1 = new CountDownTimer(1000, 1000) {
+                                            @Override
+                                            public void onTick(long l) {
+                                            }
+
+                                            @Override
+                                            public void onFinish() {
+                                                boutonAtt.setEnabled(true);
+                                                boutonAttSpé.setEnabled(true);
+                                                life1.setSecondaryProgress(hero1.getDurability());
+                                            }
+                                        };
+                                        attaqueP1.start();
+                                    }
+                                });
+                                boutonAttSpé2.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View view) {
+                                        damage = hero2.getIntelligence() - hero1.getPower();
+                                        if (damage < 0) {
+                                            damage = 0;
+                                        }
+                                        hero1.setDurability(hero1.getDurability() - damage);
+                                        life1.setProgress(hero1.getDurability());
+                                        impact(impact1, imageperso1);
+                                        boutonAtt2.setEnabled(false);
+                                        boutonAttSpé2.setEnabled(false);
+
+                                        // KO
+                                        if (hero1.IsKO()) {
+                                            endgame();
+                                            textFinGame.setText(hero2.getName() + " Vainqueur !");
+                                            imgFinGame.setImageResource(hero2.getImage1());
+                                        }
+                                        CountDownTimer attaqueP1 = new CountDownTimer(1000, 1000) {
+                                            @Override
+                                            public void onTick(long l) {
+                                            }
+
+                                            @Override
+                                            public void onFinish() {
+                                                boutonAtt.setEnabled(true);
+                                                boutonAttSpé.setEnabled(true);
+                                                life1.setSecondaryProgress(hero1.getDurability());
+                                            }
+                                        };
+                                        attaqueP1.start();
+
+                                    }
+                                });
+
+                            }
+                        };
+                        contreAttaque.start();
+                    }
+                });
+
+                boutonAttSpé.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        damage = hero1.getIntelligence() - hero2.getPower();
+                        if (damage < 0) {
+                            damage = 0;
+                        }
+                        hero2.setDurability(hero2.getDurability() - damage);
+                        life2.setProgress(hero2.getDurability());
+                        impact(impact2, imageperso2);
+                        boutonAtt.setEnabled(false);
+                        boutonAttSpé.setEnabled(false);
+
+                        // KO
+                        if (hero2.IsKO()) {
+                            endgame();
+                            textFinGame.setText(hero1.getName() + " Vainqueur !");
+                            imgFinGame.setImageResource(hero1.getImage1());
+                        }
+                        CountDownTimer contreAttaque = new CountDownTimer(1000, 1000) {
+                            @Override
+                            public void onTick(long l) {
+                            }
+
+                            @Override
+                            public void onFinish() {
+                                boutonAtt2.setEnabled(true);
+                                boutonAttSpé2.setEnabled(true);
+                                life2.setSecondaryProgress(hero2.getDurability());
+
+                                boutonAtt2.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View view) {
+                                        damage = hero2.getStrength() - hero1.getCombat();
+                                        if (damage < 0) {
+                                            damage = 0;
+                                        }
+                                        hero1.setDurability(hero1.getDurability() - damage);
+                                        life1.setProgress(hero1.getDurability());
+                                        impact(impact1, imageperso1);
+                                        boutonAtt2.setEnabled(false);
+                                        boutonAttSpé2.setEnabled(false);
+
+                                        // KO
+                                        if (hero1.IsKO()) {
+                                            endgame();
+                                            textFinGame.setText(hero2.getName() + " Vainqueur !");
+                                            imgFinGame.setImageResource(hero2.getImage1());
+                                        }
+                                        CountDownTimer attaqueP1 = new CountDownTimer(1000, 1000) {
+                                            @Override
+                                            public void onTick(long l) {
+                                            }
+
+                                            @Override
+                                            public void onFinish() {
+                                                boutonAtt.setEnabled(true);
+                                                boutonAttSpé.setEnabled(true);
+                                                life1.setSecondaryProgress(hero1.getDurability());
+                                            }
+                                        };
+                                        attaqueP1.start();
+                                    }
+                                });
+                                boutonAttSpé2.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View view) {
+                                        damage = hero2.getIntelligence() - hero1.getPower();
+                                        if (damage < 0) {
+                                            damage = 0;
+                                        }
+                                        hero1.setDurability(hero1.getDurability() - damage);
+                                        life1.setProgress(hero1.getDurability());
+                                        impact(impact1, imageperso1);
+                                        boutonAtt2.setEnabled(false);
+                                        boutonAttSpé2.setEnabled(false);
+
+                                        // KO
+                                        if (hero1.IsKO()) {
+                                            endgame();
+                                            textFinGame.setText(hero2.getName() + " Vainqueur !");
+                                            imgFinGame.setImageResource(hero2.getImage1());
+                                        }
+                                        CountDownTimer attaqueP1 = new CountDownTimer(1000, 1000) {
+                                            @Override
+                                            public void onTick(long l) {
+                                            }
+
+                                            @Override
+                                            public void onFinish() {
+                                                boutonAtt.setEnabled(true);
+                                                boutonAttSpé.setEnabled(true);
+                                                life1.setSecondaryProgress(hero1.getDurability());
+                                            }
+                                        };
+                                        attaqueP1.start();
+
+                                    }
+                                });
+
+                            }
+                        };
+                        contreAttaque.start();
+
+                    }
+                });
+
+
+            }
+
+
+            // Fin de Match :
+
+            boutonSelection.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(FightActivity.this, SelectPersoActivity.class);
+                    intent.putExtra("val", type);
+                    startActivity(intent);
                 }
             });
 
-
-
-
-
+            boutonRevive.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    hero1.setDurability(realLife1);
+                    life1.setProgress(realLife1);
+                    hero2.setDurability(realLife2);
+                    life2.setProgress(realLife2);
+                    rematch();
+                }
+            });
         }
-
-
-        // Fin de Match :
-
-        boutonSelection.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                retourSelect();
-            }
-        });
-
-        boutonRevive.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                hero1.setDurability(realLife1);
-                life1.setProgress(realLife1);
-                hero2.setDurability(realLife2);
-                life2.setProgress(realLife2);
-                rematch();
-            }
-        });
 
     }
 
@@ -519,6 +585,12 @@ public class FightActivity  extends AppCompatActivity {
         textFinGame.setVisibility(View.VISIBLE);
         imgFinGame.setVisibility(View.VISIBLE);
     }
+    public void endgame2() {
+        boutonAtt.setEnabled(false);
+        boutonAttSpé.setEnabled(false);
+        boutonSelection.setVisibility(View.VISIBLE);
+        textFinGame.setVisibility(View.VISIBLE);
+    }
 
     public void rematch() {
         boutonAtt.setEnabled(true);
@@ -529,11 +601,6 @@ public class FightActivity  extends AppCompatActivity {
         imgFinGame.setVisibility(View.GONE);
     }
 
-    public void retourSelect() {
-        Intent intent = new Intent(FightActivity.this, SelectPersoActivity.class);
-        startActivity(intent);
-
-    }
 
     public void impact(final ImageView impact, ImageView hero){
         impact.setVisibility(View.VISIBLE);
