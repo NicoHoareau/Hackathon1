@@ -1,5 +1,6 @@
 package fr.nicolashoareau_toulousewcs.hackathon1;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -19,6 +20,10 @@ public class SelectModeFightActivity extends AppCompatActivity {
         boutonP1vsP2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent = new Intent(SelectModeFightActivity.this, SelectPersoActivity.class);
+                int val = 1;
+                intent.putExtra("val", val);
+                startActivity(intent);
 
             }
         });
@@ -26,6 +31,11 @@ public class SelectModeFightActivity extends AppCompatActivity {
         boutonP1vsCPU.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent = new Intent(SelectModeFightActivity.this, SelectPersoActivity.class);
+                int val = 0;
+                intent.putExtra("val", val);
+                startActivity(intent);
+
 
             }
         });
