@@ -3,6 +3,7 @@ package fr.nicolashoareau_toulousewcs.hackathon1;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.constraint.ConstraintLayout;
@@ -93,6 +94,11 @@ public class FightActivity  extends AppCompatActivity {
         life2.setMax(hero2.getDurability());
         life2.setProgress(hero2.getDurability());
         life2.setSecondaryProgress(hero2.getDurability());
+        final MediaPlayer media1 = MediaPlayer.create(getBaseContext(), R.raw.musiquecombat);
+        media1.start();
+        media1.setLooping(true);
+
+
 
 
         // Préparation Arene
@@ -140,6 +146,7 @@ public class FightActivity  extends AppCompatActivity {
                     Intent intent = new Intent(FightActivity.this, SelectPersoActivity.class);
                     intent.putExtra("val", type);
                     startActivity(intent);
+                    media1.stop();
                 }
             });
 
@@ -547,6 +554,7 @@ public class FightActivity  extends AppCompatActivity {
                     Intent intent = new Intent(FightActivity.this, SelectPersoActivity.class);
                     intent.putExtra("val", type);
                     startActivity(intent);
+                    media1.stop();
                 }
             });
 
@@ -573,12 +581,18 @@ public class FightActivity  extends AppCompatActivity {
         boutonRevive.setVisibility(View.VISIBLE);
         boutonSelection.setVisibility(View.VISIBLE);
         textFinGame.setVisibility(View.VISIBLE);
+
+        imgFinGame.setVisibility(View.VISIBLE);
+        MediaPlayer mediadead = MediaPlayer.create(getBaseContext(), R.raw.coupphysique);
+        mediadead.start();
+
     }
     public void endgame2() {
         boutonAtt.setEnabled(false);
         boutonAttSpé.setEnabled(false);
         boutonSelection.setVisibility(View.VISIBLE);
         textFinGame.setVisibility(View.VISIBLE);
+
     }
 
     public void rematch() {
@@ -623,6 +637,8 @@ public class FightActivity  extends AppCompatActivity {
     private void moveViewToScreenCenter( View view )
     {
 
+        MediaPlayer mediapunch = MediaPlayer.create(getBaseContext(), R.raw.coupphysique);
+        mediapunch.start();
         DisplayMetrics dm = new DisplayMetrics();
         this.getWindowManager().getDefaultDisplay().getMetrics( dm );
         int originalPos[] = new int[2];
@@ -643,6 +659,8 @@ public class FightActivity  extends AppCompatActivity {
     private void moveViewToScreenCenter2( View view )
     {
 
+        MediaPlayer mediapunch = MediaPlayer.create(getBaseContext(), R.raw.coupphysique);
+        mediapunch.start();
         DisplayMetrics dm = new DisplayMetrics();
         this.getWindowManager().getDefaultDisplay().getMetrics( dm );
         int originalPos[] = new int[2];
@@ -660,6 +678,8 @@ public class FightActivity  extends AppCompatActivity {
         view.startAnimation(anim2);
     }
     public void animeffect(final ImageView imageeffect){
+        MediaPlayer mediapunch = MediaPlayer.create(getBaseContext(), R.raw.coupphysique);
+        mediapunch.start();
         imageeffect.setVisibility(View.VISIBLE);
         Animation anim = new AlphaAnimation(0.0f, 1.0f);
         anim.setDuration(50); //You can manage the blinking time with this parameter
