@@ -48,26 +48,26 @@ public class SelectPersoActivity extends AppCompatActivity {
 
         //TODO : faire les résultats
 
-        results.add(new HeroModel(70, "Batman", 100, 26, 27, 50, 47, 100, R.drawable.img70_1,R.drawable.ic_launcher_background,R.drawable.ic_launcher_background, R.drawable.img70_icon));
-        results.add(new HeroModel(149, "Captain America", 69, 19, 38, 55, 60, 100,R.drawable.img149_1,R.drawable.ic_launcher_background,R.drawable.ic_launcher_background, R.drawable.img149_icon));
+        results.add(new HeroModel(70, "Batman", 100, 55, 27, 50, 47, 50, R.drawable.img70_1,R.drawable.ic_launcher_background,R.drawable.ic_launcher_background, R.drawable.img70_icon));
+        results.add(new HeroModel(149, "Captain America", 69, 55, 38, 55, 60, 50,R.drawable.img149_1,R.drawable.ic_launcher_background,R.drawable.ic_launcher_background, R.drawable.img149_icon));
         results.add(new HeroModel(176, "Chuck Norris", 50, 80, 47, 56, 42, 99 ,R.drawable.img176_1,R.drawable.ic_launcher_background,R.drawable.ic_launcher_background, R.drawable.img176_icon));
-        results.add(new HeroModel(208, "Dark Vador", 69, 48, 33, 35, 100, 100,R.drawable.img208_1,R.drawable.ic_launcher_background,R.drawable.ic_launcher_background, R.drawable.img208_icon));
-        results.add(new HeroModel(213, "Dead Pool",69, 32, 50, 100, 100, 100, R.drawable.img213_1,R.drawable.ic_launcher_background,R.drawable.ic_launcher_background, R.drawable.img213_icon));
-        results.add(new HeroModel(263, "Flash", 63, 10, 100, 50, 68, 32,R.drawable.img263_1,R.drawable.ic_launcher_background,R.drawable.ic_launcher_background, R.drawable.img263_icon));
-        results.add(new HeroModel(289, "Goku", 56, 100, 75, 90, 100, 100,R.drawable.img289_1,R.drawable.ic_launcher_background,R.drawable.ic_launcher_background, R.drawable.img289_icon));
-        results.add(new HeroModel(310, "Harry Potter", 75, 7, 21, 10, 100, 50, R.drawable.img310_1,R.drawable.ic_launcher_background,R.drawable.ic_launcher_background, R.drawable.img310_icon));
-        results.add(new HeroModel(332, "Hulk", 88, 100, 63, 100, 98, 85, R.drawable.img332_1,R.drawable.ic_launcher_background,R.drawable.ic_launcher_background, R.drawable.img332_icon));
-        results.add(new HeroModel(346, "Iron Man", 100, 85, 58, 85, 100, 64, R.drawable.img346_1,R.drawable.ic_launcher_background,R.drawable.ic_launcher_background, R.drawable.img346_icon));
-        results.add(new HeroModel(352, "James Bond", 88, 13, 17, 35, 25, 90, R.drawable.img352_1,R.drawable.ic_launcher_background,R.drawable.ic_launcher_background, R.drawable.img352_icon));
-        results.add(new HeroModel(370, "Joker", 100, 10, 12, 60, 43, 70, R.drawable.img370_1,R.drawable.ic_launcher_background,R.drawable.ic_launcher_background, R.drawable.img370_icon));
-        results.add(new HeroModel(373, "Judge Dredd", 75, 18, 38, 50, 52, 95, R.drawable.img373_1,R.drawable.ic_launcher_background,R.drawable.ic_launcher_background, R.drawable.img373_icon));
-        results.add(new HeroModel(404, "Leonardo", 75, 16, 50, 65, 59, 80, R.drawable.img404_1,R.drawable.ic_launcher_background,R.drawable.ic_launcher_background, R.drawable.img404_icon));
+        results.add(new HeroModel(208, "Dark Vador", 69, 48, 33, 35, 60, 55,R.drawable.img208_1,R.drawable.ic_launcher_background,R.drawable.ic_launcher_background, R.drawable.img208_icon));
+        results.add(new HeroModel(213, "Dead Pool",69, 52, 50, 100, 40, 100, R.drawable.img213_1,R.drawable.ic_launcher_background,R.drawable.ic_launcher_background, R.drawable.img213_icon));
+        results.add(new HeroModel(263, "Flash", 63, 40, 100, 50, 68, 32,R.drawable.img263_1,R.drawable.ic_launcher_background,R.drawable.ic_launcher_background, R.drawable.img263_icon));
+        results.add(new HeroModel(289, "Goku", 56, 100, 75, 90, 40, 60,R.drawable.img289_1,R.drawable.ic_launcher_background,R.drawable.ic_launcher_background, R.drawable.img289_icon));
+        results.add(new HeroModel(310, "Harry Potter", 75, 70, 21, 10, 45, 50, R.drawable.img310_1,R.drawable.ic_launcher_background,R.drawable.ic_launcher_background, R.drawable.img310_icon));
+        results.add(new HeroModel(332, "Hulk", 100, 100, 63, 100, 60, 60, R.drawable.img332_1,R.drawable.ic_launcher_background,R.drawable.ic_launcher_background, R.drawable.img332_icon));
+        results.add(new HeroModel(346, "Iron Man", 100, 85, 58, 85, 40, 45, R.drawable.img346_1,R.drawable.ic_launcher_background,R.drawable.ic_launcher_background, R.drawable.img346_icon));
+        results.add(new HeroModel(352, "James Bond", 88, 30, 17, 35, 25, 90, R.drawable.img352_1,R.drawable.ic_launcher_background,R.drawable.ic_launcher_background, R.drawable.img352_icon));
+        results.add(new HeroModel(370, "Joker", 100, 45, 12, 60, 43, 55, R.drawable.img370_1,R.drawable.ic_launcher_background,R.drawable.ic_launcher_background, R.drawable.img370_icon));
+        results.add(new HeroModel(373, "Judge Dredd", 75, 45, 38, 50, 52, 95, R.drawable.img373_1,R.drawable.ic_launcher_background,R.drawable.ic_launcher_background, R.drawable.img373_icon));
+        results.add(new HeroModel(404, "Leonardo", 75, 55, 50, 65, 59, 80, R.drawable.img404_1,R.drawable.ic_launcher_background,R.drawable.ic_launcher_background, R.drawable.img404_icon));
         results.add(new HeroModel(502, "Saïtama", 38, 100000, 83, 95, 1000, 1000, R.drawable.img502_1,R.drawable.ic_launcher_background,R.drawable.ic_launcher_background, R.drawable.img502_icon));
-        results.add(new HeroModel(540, "Rambo", 63, 14, 25, 30, 30, 100, R.drawable.img540_1,R.drawable.ic_launcher_background,R.drawable.ic_launcher_background, R.drawable.img540_icon));
-        results.add(new HeroModel(574, "Sauron", 88, 85, 33, 100, 100, 70, R.drawable.img574_1,R.drawable.ic_launcher_background,R.drawable.ic_launcher_background, R.drawable.img574_icon));
-        results.add(new HeroModel(644, "SuperMan", 94, 100, 100, 100, 100, 85, R.drawable.img644_1,R.drawable.ic_launcher_background,R.drawable.ic_launcher_background, R.drawable.img644_icon));
-        results.add(new HeroModel(650, "T800", 75, 34, 17, 60, 73, 65 ,R.drawable.img650_1,R.drawable.ic_launcher_background,R.drawable.ic_launcher_background, R.drawable.img650_icon));
-        results.add(new HeroModel(720, "Wonder Woman", 88, 100, 79, 100, 100, 100, R.drawable.img720_1,R.drawable.ic_launcher_background,R.drawable.ic_launcher_background, R.drawable.img720_icon));
+        results.add(new HeroModel(540, "Rambo", 63, 45, 25, 30, 30, 100, R.drawable.img540_1,R.drawable.ic_launcher_background,R.drawable.ic_launcher_background, R.drawable.img540_icon));
+        results.add(new HeroModel(574, "Sauron", 88, 85, 33, 100, 33, 70, R.drawable.img574_1,R.drawable.ic_launcher_background,R.drawable.ic_launcher_background, R.drawable.img574_icon));
+        results.add(new HeroModel(644, "SuperMan", 94, 100, 100, 100, 80, 100, R.drawable.img644_1,R.drawable.ic_launcher_background,R.drawable.ic_launcher_background, R.drawable.img644_icon));
+        results.add(new HeroModel(650, "T800", 75, 45, 17, 60, 73, 65 ,R.drawable.img650_1,R.drawable.ic_launcher_background,R.drawable.ic_launcher_background, R.drawable.img650_icon));
+        results.add(new HeroModel(720, "Wonder Woman", 88, 100, 79, 100, 67, 52, R.drawable.img720_1,R.drawable.ic_launcher_background,R.drawable.ic_launcher_background, R.drawable.img720_icon));
        
 
         SelectPersoAdapter adapter = new SelectPersoAdapter(this, results);
