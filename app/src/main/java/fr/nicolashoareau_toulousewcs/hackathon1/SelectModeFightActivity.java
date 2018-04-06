@@ -19,7 +19,7 @@ public class SelectModeFightActivity extends AppCompatActivity {
 
 
 
-        MediaPlayer media1 = MediaPlayer.create(getBaseContext(), R.raw.musiquemenu);
+        final MediaPlayer media1 = MediaPlayer.create(getBaseContext(), R.raw.musiquemenu);
         media1.start();
         media1.setLooping(true);
         final MediaPlayer media2 = MediaPlayer.create(getBaseContext(), R.raw.menuselect);
@@ -35,6 +35,7 @@ public class SelectModeFightActivity extends AppCompatActivity {
                 intent.putExtra("val", val);
                 startActivity(intent);
                 media2.start();
+                media1.stop();
 
             }
         });
@@ -47,6 +48,7 @@ public class SelectModeFightActivity extends AppCompatActivity {
                 intent.putExtra("val", val);
                 startActivity(intent);
                 media2.start();
+                media1.stop();
 
 
             }

@@ -51,7 +51,7 @@ public class SelectPersoActivity extends AppCompatActivity {
         results.add(new HeroModel(208, "Dark Vador", 69, 48, 33, 35, 60, 55,R.drawable.img208_1,R.drawable.ic_launcher_background,R.drawable.ic_launcher_background, R.drawable.img208_icon));
         results.add(new HeroModel(213, "Dead Pool",69, 52, 50, 100, 40, 100, R.drawable.img213_1,R.drawable.ic_launcher_background,R.drawable.ic_launcher_background, R.drawable.img213_icon));
         results.add(new HeroModel(263, "Flash", 63, 50, 100, 50, 68, 32,R.drawable.img263_1,R.drawable.ic_launcher_background,R.drawable.ic_launcher_background, R.drawable.img263_icon));
-        results.add(new HeroModel(289, "Goku", 56, 100, 75, 90, 40, 60,R.drawable.img289_1,R.drawable.ic_launcher_background,R.drawable.ic_launcher_background, R.drawable.img289_icon));
+        results.add(new HeroModel(289, "Goku", 80, 100, 75, 90, 80, 90,R.drawable.img289_1,R.drawable.ic_launcher_background,R.drawable.ic_launcher_background, R.drawable.img289_icon));
         results.add(new HeroModel(310, "Harry Potter", 75, 70, 21, 10, 45, 50, R.drawable.img310_1,R.drawable.ic_launcher_background,R.drawable.ic_launcher_background, R.drawable.img310_icon));
         results.add(new HeroModel(332, "Hulk", 100, 100, 63, 100, 80, 80, R.drawable.img332_1,R.drawable.ic_launcher_background,R.drawable.ic_launcher_background, R.drawable.img332_icon));
         results.add(new HeroModel(346, "Iron Man", 100, 85, 58, 85, 40, 45, R.drawable.img346_1,R.drawable.ic_launcher_background,R.drawable.ic_launcher_background, R.drawable.img346_icon));
