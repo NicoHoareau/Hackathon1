@@ -4,25 +4,27 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/background_select_perso">
 
-    <Button
+
+    <ImageView
         android:id="@+id/button_p1vscpu"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="30dp"
-        android:layout_marginEnd="60dp"
-        android:text="P1 vs CPU"
+        android:layout_width="246dp"
+        android:layout_height="289dp"
+        android:layout_marginBottom="44dp"
+        android:layout_marginEnd="52dp"
+        android:src="@drawable/model1vscpu"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <Button
+    <ImageView
         android:id="@+id/button_p1vsp2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="30dp"
-        android:layout_marginStart="60dp"
-        android:text="P1 vs P2"
+        android:layout_width="246dp"
+        android:layout_height="289dp"
+        android:layout_marginBottom="44dp"
+        android:layout_marginStart="52dp"
+        android:src="@drawable/model1v1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 </android.support.constraint.ConstraintLayout>

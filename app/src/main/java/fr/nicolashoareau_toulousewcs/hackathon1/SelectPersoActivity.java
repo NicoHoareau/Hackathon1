@@ -19,11 +19,9 @@ public class SelectPersoActivity extends AppCompatActivity {
 
     ImageView imgPlayer1;
     ImageView imgPlayer2;
-    Button boutonSelect;
-    Button boutonFight;
+    ImageView boutonSelect;
+    ImageView boutonFight;
     int status = 0;
-    Button boutonSelectMap;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,7 +31,7 @@ public class SelectPersoActivity extends AppCompatActivity {
         imgPlayer2 = findViewById(R.id.iv_player2);
         boutonSelect = findViewById(R.id.button_selection);
         boutonFight = findViewById(R.id.button_fight);
-        boutonSelectMap = findViewById(R.id.button_arena);
+
         Intent intentRecep = getIntent();
         final int val = intentRecep.getIntExtra("val", 0);
 
@@ -87,7 +85,6 @@ public class SelectPersoActivity extends AppCompatActivity {
                     Parcelable hero2 = new HeroModel(item.getId(),item.getName(), item.getIntelligence(), item.getStrength(), item.getSpeed(), item.getDurability(), item.getPower(), item.getCombat(), item.getImage1(), item.getImage2(), item.getImage3(), item.getIcon());
                     gridview.setVisibility(View.GONE);
                     boutonFight.setVisibility(View.VISIBLE);
-                    boutonSelectMap.setVisibility(View.GONE);
                     intent.putExtra("intenthero2", hero2);
                     intent.putExtra("valfinal", val);
                 }
@@ -108,7 +105,6 @@ public class SelectPersoActivity extends AppCompatActivity {
                 status = 0;
                 gridview.setVisibility(View.VISIBLE);
                 boutonFight.setVisibility(View.GONE);
-                boutonSelectMap.setVisibility(View.GONE);
             }
         });
 
