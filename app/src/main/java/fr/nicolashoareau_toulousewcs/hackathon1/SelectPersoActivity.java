@@ -35,9 +35,6 @@ public class SelectPersoActivity extends AppCompatActivity {
 
         Intent intentRecep = getIntent();
         final int val = intentRecep.getIntExtra("val", 0);
-        final MediaPlayer media1 = MediaPlayer.create(getBaseContext(), R.raw.selectperso2);
-        media1.start();
-        media1.setLooping(true);
 
 
         final GridView gridview = (GridView) findViewById(R.id.grid_select_perso);
