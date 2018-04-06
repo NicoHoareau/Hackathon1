@@ -10,7 +10,10 @@
         android:id="@+id/img_versus"
         android:layout_width="wrap_content"
         android:layout_height="136dp"
-        android:src="@drawable/versus" />
+        android:layout_marginTop="32dp"
+        android:src="@drawable/versus"
+        app:layout_constraintTop_toBottomOf="@+id/button_selection"
+        tools:layout_editor_absoluteX="16dp" />
 
     <ImageView
         android:id="@+id/iv_player2"
@@ -35,8 +38,7 @@
     <GridView
         android:id="@+id/grid_select_perso"
         android:layout_width="0dp"
-        android:layout_height="215dp"
-        android:layout_marginBottom="16dp"
+        android:layout_height="175dp"
         android:layout_marginEnd="16dp"
         android:layout_marginStart="16dp"
         android:clickable="false"
@@ -48,9 +50,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button_selection"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 
     <Button
@@ -59,12 +59,11 @@
         android:layout_height="38dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="112dp"
         android:text="Selection"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/img_versus" />
+        tools:layout_editor_absoluteY="8dp" />
 
     <Button
         android:id="@+id/button_fight"
