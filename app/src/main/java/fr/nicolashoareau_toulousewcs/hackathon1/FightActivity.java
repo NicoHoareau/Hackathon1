@@ -581,8 +581,6 @@ public class FightActivity  extends AppCompatActivity {
         boutonRevive.setVisibility(View.VISIBLE);
         boutonSelection.setVisibility(View.VISIBLE);
         textFinGame.setVisibility(View.VISIBLE);
-
-        imgFinGame.setVisibility(View.VISIBLE);
         MediaPlayer mediadead = MediaPlayer.create(getBaseContext(), R.raw.coupphysique);
         mediadead.start();
 
