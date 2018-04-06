@@ -1,6 +1,7 @@
 package fr.nicolashoareau_toulousewcs.hackathon1;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
@@ -36,6 +37,10 @@ public class SelectPersoActivity extends AppCompatActivity {
         boutonSelectMap = findViewById(R.id.button_arena);
         Intent intentRecep = getIntent();
         final int val = intentRecep.getIntExtra("val", 0);
+        final MediaPlayer media1 = MediaPlayer.create(getBaseContext(), R.raw.selectperso2);
+        media1.start();
+        media1.setLooping(true);
+
 
         final GridView gridview = (GridView) findViewById(R.id.grid_select_perso);
         ArrayList<HeroModel> results = new ArrayList<>();
@@ -68,9 +73,13 @@ public class SelectPersoActivity extends AppCompatActivity {
         gridview.setAdapter(adapter);
         final Intent intent = new Intent(SelectPersoActivity.this, FightActivity.class);
 
+
         gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+
+                MediaPlayer media2 = MediaPlayer.create(getBaseContext(), R.raw.persoselect);
+                media2.start();
 
                 if (status == 0) {
                     HeroModel item = (HeroModel) gridview.getItemAtPosition(position);
@@ -79,6 +88,7 @@ public class SelectPersoActivity extends AppCompatActivity {
                     Parcelable hero1 = new HeroModel(item.getId(),item.getName(), item.getIntelligence(), item.getStrength(), item.getSpeed(), item.getDurability(), item.getPower(), item.getCombat(), item.getImage1(), item.getImage2(), item.getImage3(), item.getIcon());
                     intent.putExtra("intenthero1", hero1);
                     intent.putExtra("valfinal", val);
+
 
                 } else if (status == 1) {
                     HeroModel item = (HeroModel) gridview.getItemAtPosition(position);
@@ -98,6 +108,8 @@ public class SelectPersoActivity extends AppCompatActivity {
         boutonFight.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                MediaPlayer media3 = MediaPlayer.create(getBaseContext(), R.raw.menuselect);
+                media3.start();
                 startActivity(intent);
             }
         });
@@ -105,6 +117,8 @@ public class SelectPersoActivity extends AppCompatActivity {
         boutonSelect.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                MediaPlayer media3 = MediaPlayer.create(getBaseContext(), R.raw.persoselect);
+                media3.start();
                 status = 0;
                 gridview.setVisibility(View.VISIBLE);
                 boutonFight.setVisibility(View.GONE);
@@ -117,6 +131,8 @@ public class SelectPersoActivity extends AppCompatActivity {
 
 
     }
+
+
 
 
 
