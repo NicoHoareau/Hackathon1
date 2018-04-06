@@ -4,9 +4,12 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -23,8 +26,8 @@ import pl.droidsonroids.gif.GifImageView;
 
 public class FightActivity  extends AppCompatActivity {
 
-    Button boutonAtt;
-    Button boutonAttSpé;
+    ImageView boutonAtt;
+    ImageView boutonAttSpé;
     ImageView imageperso1;
     ImageView imageperso2;
     ImageView icon1;
@@ -39,6 +42,8 @@ public class FightActivity  extends AppCompatActivity {
     Button boutonSelection;
     TextView textFinGame;
     ImageView imgFinGame;
+    ImageView impact1;
+    ImageView impact2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +64,8 @@ public class FightActivity  extends AppCompatActivity {
         boutonSelection = findViewById(R.id.button_selection);
         textFinGame = findViewById(R.id.textView_fingame);
         imgFinGame = findViewById(R.id.imageView_fingame);
+        impact1 = findViewById(R.id.imageView_impact1);
+        impact2 = findViewById(R.id.imageView_impact2);
 
         final TextView textTest2 = findViewById(R.id.textView_test2);
         final TextView textTest1 = findViewById(R.id.textView_test1);
@@ -115,6 +122,7 @@ public class FightActivity  extends AppCompatActivity {
                 }
                 hero2.setDurability(hero2.getDurability() - damage);
                 life2.setProgress(hero2.getDurability());
+                impact(impact2, imageperso2);
 
                 // KO
                 if (hero2.IsKO()) {
@@ -122,6 +130,13 @@ public class FightActivity  extends AppCompatActivity {
                     textFinGame.setText(hero1.getName() + " Vainqueur !");
                     imgFinGame.setImageResource(hero1.getImage1());
                 }
+
+                CountDownTimer contreAttaque = new CountDownTimer(1000, 1000) {
+                    @Override
+                    public void onTick(long l) {
+                    }
+                    @Override
+                    public void onFinish() {
 
                 // contre attaque
                 Random random = new Random();
@@ -133,6 +148,7 @@ public class FightActivity  extends AppCompatActivity {
                     }
                     hero1.setDurability(hero1.getDurability() - damage);
                     life1.setProgress(hero1.getDurability());
+                    impact(impact1, imageperso1);
 
                     // KO
                     if (hero1.IsKO()) {
@@ -149,6 +165,7 @@ public class FightActivity  extends AppCompatActivity {
                     }
                         hero1.setDurability(hero1.getDurability() - damage);
                         life1.setProgress(hero1.getDurability());
+                        impact(impact1, imageperso1);
 
                     // KO
                     if (hero1.IsKO()) {
@@ -158,6 +175,9 @@ public class FightActivity  extends AppCompatActivity {
                     }
 
                 }
+                    }
+                };
+                contreAttaque.start();
                 textTest1.setText(hero1.getIntelligence() + " , " + hero1.getStrength() + " , " + hero1.getPower() + " , " + hero1.getCombat() + " , " + hero1.getDurability());
                 textTest2.setText(hero2.getIntelligence() + " , " + hero2.getStrength() + " , " + hero2.getPower() + " , " + hero2.getCombat() + " , " + hero2.getDurability());
             }
@@ -173,6 +193,7 @@ public class FightActivity  extends AppCompatActivity {
                 }
                 hero2.setDurability(hero2.getDurability() - damage);
                 life2.setProgress(hero2.getDurability());
+                impact(impact2, imageperso2);
 
                 // KO
                 if (hero2.IsKO()) {
@@ -183,41 +204,53 @@ public class FightActivity  extends AppCompatActivity {
 
                 //contre attaque spécial
 
-                Random random = new Random();
-                int r = random.nextInt(2);
-                if (r == 0) {
-
-                    damage = hero2.getStrength() - hero1.getCombat();
-                    if(damage < 0) {
-                        damage = 0;
+                CountDownTimer contreAttaque = new CountDownTimer(1000, 1000) {
+                    @Override
+                    public void onTick(long l) {
                     }
-                    hero1.setDurability(hero1.getDurability() - damage);
-                    life1.setProgress(hero1.getDurability());
+                    @Override
+                    public void onFinish() {
 
-        // KO
-                    if (hero1.IsKO()) {
-                       endgame();
-                        textFinGame.setText(hero2.getName() + " Vainqueur !");
-                        imgFinGame.setImageResource(hero2.getImage1());
+                        // contre attaque
+                        Random random = new Random();
+                        int r = random.nextInt(2);
+                        if (r == 0) {
+                            damage = hero2.getStrength() - hero1.getCombat();
+                            if(damage < 0) {
+                                damage = 0;
+                            }
+                            hero1.setDurability(hero1.getDurability() - damage);
+                            life1.setProgress(hero1.getDurability());
+                            impact(impact1, imageperso1);
+
+                            // KO
+                            if (hero1.IsKO()) {
+                                endgame();
+                                textFinGame.setText(hero2.getName() + " Vainqueur !");
+                                imgFinGame.setImageResource(hero2.getImage1());
+                            }
+                        }
+                        else {
+
+                            damage = hero2.getIntelligence() - hero1.getPower();
+                            if(damage < 0) {
+                                damage = 0;
+                            }
+                            hero1.setDurability(hero1.getDurability() - damage);
+                            life1.setProgress(hero1.getDurability());
+                            impact(impact1, imageperso1);
+
+                            // KO
+                            if (hero1.IsKO()) {
+                                endgame();
+                                textFinGame.setText(hero2.getName() + " Vainqueur !");
+                                imgFinGame.setImageResource(hero2.getImage1());
+                            }
+
+                        }
                     }
-                }
-                else {
-
-                        damage = hero2.getIntelligence() - hero1.getPower();
-                    if(damage < 0) {
-                        damage = 0;
-                    }
-                        hero1.setDurability(hero1.getDurability() - damage);
-                        life1.setProgress(hero1.getDurability());
-
-  // KO
-                    if (hero1.IsKO()) {
-                        endgame();
-                        textFinGame.setText(hero2.getName() + " Vainqueur !");
-                        imgFinGame.setImageResource(hero2.getImage1());
-                    }
-
-                }
+                };
+                contreAttaque.start();
 
                 textTest1.setText(hero1.getIntelligence() + " , " + hero1.getStrength() + " , " + hero1.getPower() + " , " + hero1.getCombat() + " , " + hero1.getDurability());
                 textTest2.setText(hero2.getIntelligence() + " , " + hero2.getStrength() + " , " + hero2.getPower() + " , " + hero2.getCombat() + " , " + hero2.getDurability());
@@ -274,4 +307,37 @@ public class FightActivity  extends AppCompatActivity {
         startActivity(intent);
 
     }
+
+    public void impact(final ImageView impact, ImageView hero){
+        impact.setVisibility(View.VISIBLE);
+        Random r = new Random();
+        int i2 = r.nextInt( 100) - 50;
+        Random t = new Random();
+        int i1 = t.nextInt(100) - 50;
+        impact.setTranslationX(i2);
+        impact.setTranslationY(i1);
+        CountDownTimer count = new CountDownTimer(700, 100) {
+            @Override
+            public void onTick(long l) {
+            }
+            @Override
+            public void onFinish() {
+                impact.setVisibility(View.INVISIBLE);
+            }
+        };
+        count.start();
+        animsimple(hero);
+    }
+
+    public void animsimple(ImageView imagehero){
+        Animation anim = new AlphaAnimation(0.0f, 1.0f);
+        anim.setDuration(50); //You can manage the blinking time with this parameter
+        anim.setRepeatMode(Animation.REVERSE);
+        anim.setRepeatCount(5);
+        imagehero.startAnimation(anim);
+
+    }
+
+
+
 }
