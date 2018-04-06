@@ -12,29 +12,19 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".SplashScreenIntroActivity">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
-
         <activity android:name=".MainActivity" />
         <activity
             android:name=".SelectPersoActivity"
-            android:screenOrientation="landscape">
-
-
-        </activity>
+            android:screenOrientation="landscape"></activity>
         <activity android:name=".FightActivity" />
-
-        <activity android:name=".ArenaActivity">
-
-        </activity>
-
-
+        <activity android:name=".ArenaActivity"></activity>
+        <activity android:name=".SelectModeFightActivity"></activity>
     </application>
 
 </manifest>

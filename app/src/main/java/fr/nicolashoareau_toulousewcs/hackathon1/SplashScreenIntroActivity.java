@@ -22,7 +22,7 @@ public class SplashScreenIntroActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent i = new Intent(SplashScreenIntroActivity.this, SelectPersoActivity.class);
+                Intent i = new Intent(SplashScreenIntroActivity.this, SelectModeFightActivity.class);
                 startActivity(i);
                 finish();
             }
