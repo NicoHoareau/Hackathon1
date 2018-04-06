@@ -7,9 +7,11 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
+import android.view.animation.TranslateAnimation;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -46,6 +48,7 @@ public class FightActivity  extends AppCompatActivity {
     ImageView imgFinGame;
     ImageView impact1;
     ImageView impact2;
+    ImageView effectBlanc;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,6 +73,7 @@ public class FightActivity  extends AppCompatActivity {
         impact2 = findViewById(R.id.imageView_impact2);
         boutonAtt2 = findViewById(R.id.imageView_att2);
         boutonAttSpé2 = findViewById(R.id.imageView_spé2);
+        effectBlanc = findViewById(R.id.imageView_effectBlanc);
 
         final TextView textTest2 = findViewById(R.id.textView_test2);
         final TextView textTest1 = findViewById(R.id.textView_test1);
@@ -178,6 +182,7 @@ public class FightActivity  extends AppCompatActivity {
                         impact(impact2, imageperso2);
                         boutonAtt.setEnabled(false);
                         boutonAttSpé.setEnabled(false);
+                        moveViewToScreenCenter(imageperso1);
 
                         // KO
                         if (hero2.IsKO()) {
@@ -208,6 +213,7 @@ public class FightActivity  extends AppCompatActivity {
                                     hero1.setDurability(hero1.getDurability() - damage);
                                     life1.setProgress(hero1.getDurability());
                                     impact(impact1, imageperso1);
+                                    moveViewToScreenCenter2(imageperso2);
 
                                     // KO
                                     if (hero1.IsKO()) {
@@ -224,6 +230,7 @@ public class FightActivity  extends AppCompatActivity {
                                     hero1.setDurability(hero1.getDurability() - damage);
                                     life1.setProgress(hero1.getDurability());
                                     impact(impact1, imageperso1);
+                                    animeffect(effectBlanc);
 
                                     // KO
                                     if (hero1.IsKO()) {
@@ -252,6 +259,7 @@ public class FightActivity  extends AppCompatActivity {
                         hero2.setDurability(hero2.getDurability() - damage);
                         life2.setProgress(hero2.getDurability());
                         impact(impact2, imageperso2);
+                        animeffect(effectBlanc);
                         boutonAtt.setEnabled(false);
                         boutonAttSpé.setEnabled(false);
 
@@ -286,6 +294,7 @@ public class FightActivity  extends AppCompatActivity {
                                     hero1.setDurability(hero1.getDurability() - damage);
                                     life1.setProgress(hero1.getDurability());
                                     impact(impact1, imageperso1);
+                                    moveViewToScreenCenter2(imageperso2);
 
                                     // KO
                                     if (hero1.IsKO()) {
@@ -301,6 +310,7 @@ public class FightActivity  extends AppCompatActivity {
                                     }
                                     hero1.setDurability(hero1.getDurability() - damage);
                                     life1.setProgress(hero1.getDurability());
+                                    animeffect(effectBlanc);
                                     impact(impact1, imageperso1);
 
                                     // KO
@@ -341,6 +351,7 @@ public class FightActivity  extends AppCompatActivity {
                         hero2.setDurability(hero2.getDurability() - damage);
                         life2.setProgress(hero2.getDurability());
                         impact(impact2, imageperso2);
+                        moveViewToScreenCenter(imageperso1);
                         boutonAtt.setEnabled(false);
                         boutonAttSpé.setEnabled(false);
 
@@ -372,6 +383,7 @@ public class FightActivity  extends AppCompatActivity {
                                         hero1.setDurability(hero1.getDurability() - damage);
                                         life1.setProgress(hero1.getDurability());
                                         impact(impact1, imageperso1);
+                                        moveViewToScreenCenter2(imageperso2);
                                         boutonAtt2.setEnabled(false);
                                         boutonAttSpé2.setEnabled(false);
 
@@ -406,6 +418,7 @@ public class FightActivity  extends AppCompatActivity {
                                         hero1.setDurability(hero1.getDurability() - damage);
                                         life1.setProgress(hero1.getDurability());
                                         impact(impact1, imageperso1);
+                                        animeffect(effectBlanc);
                                         boutonAtt2.setEnabled(false);
                                         boutonAttSpé2.setEnabled(false);
 
@@ -448,6 +461,7 @@ public class FightActivity  extends AppCompatActivity {
                         hero2.setDurability(hero2.getDurability() - damage);
                         life2.setProgress(hero2.getDurability());
                         impact(impact2, imageperso2);
+                        animeffect(effectBlanc);
                         boutonAtt.setEnabled(false);
                         boutonAttSpé.setEnabled(false);
 
@@ -478,6 +492,7 @@ public class FightActivity  extends AppCompatActivity {
                                         hero1.setDurability(hero1.getDurability() - damage);
                                         life1.setProgress(hero1.getDurability());
                                         impact(impact1, imageperso1);
+                                        moveViewToScreenCenter2(imageperso2);
                                         boutonAtt2.setEnabled(false);
                                         boutonAttSpé2.setEnabled(false);
 
@@ -512,6 +527,7 @@ public class FightActivity  extends AppCompatActivity {
                                         hero1.setDurability(hero1.getDurability() - damage);
                                         life1.setProgress(hero1.getDurability());
                                         impact(impact1, imageperso1);
+                                        animeffect(effectBlanc);
                                         boutonAtt2.setEnabled(false);
                                         boutonAttSpé2.setEnabled(false);
 
@@ -629,6 +645,66 @@ public class FightActivity  extends AppCompatActivity {
         anim.setRepeatMode(Animation.REVERSE);
         anim.setRepeatCount(5);
         imagehero.startAnimation(anim);
+
+    }
+
+    private void moveViewToScreenCenter( View view )
+    {
+
+        DisplayMetrics dm = new DisplayMetrics();
+        this.getWindowManager().getDefaultDisplay().getMetrics( dm );
+        int originalPos[] = new int[2];
+        view.getLocationOnScreen( originalPos );
+        int xDest = dm.widthPixels/2;
+        xDest -= (view.getMeasuredWidth()/2);
+
+        TranslateAnimation anim = new TranslateAnimation( 0, xDest, 0, 0 );
+        anim.setDuration(1000);
+        anim.setFillAfter( true );
+        view.startAnimation(anim);
+        TranslateAnimation anim2 = new TranslateAnimation( xDest, 0, 0, 0 );
+        anim2.setDuration(1000);
+        anim2.setFillAfter( true );
+        view.startAnimation(anim2);
+    }
+
+    private void moveViewToScreenCenter2( View view )
+    {
+
+        DisplayMetrics dm = new DisplayMetrics();
+        this.getWindowManager().getDefaultDisplay().getMetrics( dm );
+        int originalPos[] = new int[2];
+        view.getLocationOnScreen( originalPos );
+        int xDest = -dm.widthPixels/2;
+        xDest -= (view.getMeasuredWidth()/2);
+
+        TranslateAnimation anim = new TranslateAnimation( 0, xDest, 0, 0 );
+        anim.setDuration(1000);
+        anim.setFillAfter( true );
+        view.startAnimation(anim);
+        TranslateAnimation anim2 = new TranslateAnimation( xDest, 0, 0, 0 );
+        anim2.setDuration(1000);
+        anim2.setFillAfter( true );
+        view.startAnimation(anim2);
+    }
+    public void animeffect(final ImageView imageeffect){
+        imageeffect.setVisibility(View.VISIBLE);
+        Animation anim = new AlphaAnimation(0.0f, 1.0f);
+        anim.setDuration(50); //You can manage the blinking time with this parameter
+        anim.setRepeatMode(Animation.REVERSE);
+        anim.setRepeatCount(5);
+        imageeffect.startAnimation(anim);
+        CountDownTimer count = new CountDownTimer(300, 100) {
+            @Override
+            public void onTick(long l) {
+            }
+
+            @Override
+            public void onFinish() {
+                imageeffect.setVisibility(View.INVISIBLE);
+            }
+        };
+        count.start();
 
     }
 
