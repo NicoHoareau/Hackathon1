@@ -32,8 +32,6 @@
             android:screenOrientation="landscape">
 
         </activity>
-        <activity android:name=".ArenaActivity"
-            android:screenOrientation="landscape"/>
 
         <activity android:name=".SelectModeFightActivity"
             android:screenOrientation="landscape"/>

@@ -43,10 +43,9 @@ public class FightActivity  extends AppCompatActivity {
     ProgressBar life2;
     int damage = 0;
     TextView résultat;
-    Button boutonRevive;
-    Button boutonSelection;
+    ImageView boutonRevive;
+    ImageView boutonSelection;
     TextView textFinGame;
-    ImageView imgFinGame;
     ImageView impact1;
     ImageView impact2;
     ImageView effectBlanc;
@@ -69,15 +68,11 @@ public class FightActivity  extends AppCompatActivity {
         boutonRevive = findViewById(R.id.butto_rematch);
         boutonSelection = findViewById(R.id.button_selection);
         textFinGame = findViewById(R.id.textView_fingame);
-        imgFinGame = findViewById(R.id.imageView_fingame);
         impact1 = findViewById(R.id.imageView_impact1);
         impact2 = findViewById(R.id.imageView_impact2);
         boutonAtt2 = findViewById(R.id.imageView_att2);
         boutonAttSpé2 = findViewById(R.id.imageView_spé2);
         effectBlanc = findViewById(R.id.imageView_effectBlanc);
-
-        final TextView textTest2 = findViewById(R.id.textView_test2);
-        final TextView textTest1 = findViewById(R.id.textView_test1);
 
         // préparation combat :
 
@@ -107,7 +102,7 @@ public class FightActivity  extends AppCompatActivity {
 
 
         // Préparation Arene
-        final int[] photos={R.drawable.gifview1firehouse, R.drawable.gifview2rainkioske,R.drawable.gifview3cascadegif, R.drawable.dark_temple};
+        final int[] photos={R.drawable.gifview1firehouse, R.drawable.rock,R.drawable.gifview3cascadegif, R.drawable.dark_temple};
         final GifImageView gifImageView = findViewById(R.id.gif_iv);
         final Random ran =new Random();
         final int i = ran.nextInt(photos.length);
@@ -124,8 +119,6 @@ public class FightActivity  extends AppCompatActivity {
         //No clickable gif :
         gifImageView.setEnabled(false);
 
-        textTest1.setText(hero1.getIntelligence() + " , " + hero1.getStrength() + " , " + hero1.getPower() + " , " + hero1.getCombat() + " , " + hero1.getDurability());
-        textTest2.setText(hero2.getIntelligence() + " , " + hero2.getStrength() + " , " + hero2.getPower() + " , " + hero2.getCombat() + " , " + hero2.getDurability());
 
         // combat :
 
@@ -140,12 +133,10 @@ public class FightActivity  extends AppCompatActivity {
                 boutonAtt.setEnabled(false);
                 boutonAttSpé.setEnabled(false);
                 textFinGame.setText(hero1.getName() + " Vainqueur !");
-                imgFinGame.setImageResource(hero1.getImage1());
                 endgame2();
             }
             else if (hero2.getId() == 176){
                 textFinGame.setText(hero2.getName() + " Vainqueur !");
-                imgFinGame.setImageResource(hero2.getImage2());
                 endgame2();
             }
 
@@ -195,7 +186,6 @@ public class FightActivity  extends AppCompatActivity {
                         if (hero2.IsKO()) {
                             endgame();
                             textFinGame.setText(hero1.getName() + " Vainqueur !");
-                            imgFinGame.setImageResource(hero1.getImage1());
                         }
 
                         CountDownTimer contreAttaque = new CountDownTimer(1000, 1000) {
@@ -226,7 +216,6 @@ public class FightActivity  extends AppCompatActivity {
                                     if (hero1.IsKO()) {
                                         endgame();
                                         textFinGame.setText(hero2.getName() + " Vainqueur !");
-                                        imgFinGame.setImageResource(hero2.getImage1());
                                     }
                                 } else {
 
@@ -243,15 +232,12 @@ public class FightActivity  extends AppCompatActivity {
                                     if (hero1.IsKO()) {
                                         endgame();
                                         textFinGame.setText(hero2.getName() + " Vainqueur !");
-                                        imgFinGame.setImageResource(hero2.getImage1());
                                     }
 
                                 }
                             }
                         };
                         contreAttaque.start();
-                        textTest1.setText(hero1.getIntelligence() + " , " + hero1.getStrength() + " , " + hero1.getPower() + " , " + hero1.getCombat() + " , " + hero1.getDurability());
-                        textTest2.setText(hero2.getIntelligence() + " , " + hero2.getStrength() + " , " + hero2.getPower() + " , " + hero2.getCombat() + " , " + hero2.getDurability());
                     }
                 });
 
@@ -274,7 +260,6 @@ public class FightActivity  extends AppCompatActivity {
                         if (hero2.IsKO()) {
                             endgame();
                             textFinGame.setText(hero1.getName() + " Vainqueur !");
-                            imgFinGame.setImageResource(hero1.getImage1());
                         }
 
                         //contre attaque spécial
@@ -307,7 +292,6 @@ public class FightActivity  extends AppCompatActivity {
                                     if (hero1.IsKO()) {
                                         endgame();
                                         textFinGame.setText(hero2.getName() + " Vainqueur !");
-                                        imgFinGame.setImageResource(hero2.getImage1());
                                     }
                                 } else {
 
@@ -324,16 +308,12 @@ public class FightActivity  extends AppCompatActivity {
                                     if (hero1.IsKO()) {
                                         endgame();
                                         textFinGame.setText(hero2.getName() + " Vainqueur !");
-                                        imgFinGame.setImageResource(hero2.getImage1());
                                     }
 
                                 }
                             }
                         };
                         contreAttaque.start();
-
-                        textTest1.setText(hero1.getIntelligence() + " , " + hero1.getStrength() + " , " + hero1.getPower() + " , " + hero1.getCombat() + " , " + hero1.getDurability());
-                        textTest2.setText(hero2.getIntelligence() + " , " + hero2.getStrength() + " , " + hero2.getPower() + " , " + hero2.getCombat() + " , " + hero2.getDurability());
 
                     }
                 });
@@ -366,7 +346,6 @@ public class FightActivity  extends AppCompatActivity {
                         if (hero2.IsKO()) {
                             endgame();
                             textFinGame.setText(hero1.getName() + " Vainqueur !");
-                            imgFinGame.setImageResource(hero1.getImage1());
 
                         }
                         CountDownTimer contreAttaque = new CountDownTimer(1000, 1000) {
@@ -398,7 +377,6 @@ public class FightActivity  extends AppCompatActivity {
                                         if (hero1.IsKO()) {
                                             endgame();
                                             textFinGame.setText(hero2.getName() + " Vainqueur !");
-                                            imgFinGame.setImageResource(hero2.getImage1());
                                         }
                                         CountDownTimer attaqueP1 = new CountDownTimer(1000, 1000) {
                                             @Override
@@ -433,7 +411,6 @@ public class FightActivity  extends AppCompatActivity {
                                         if (hero1.IsKO()) {
                                             endgame();
                                             textFinGame.setText(hero2.getName() + " Vainqueur !");
-                                            imgFinGame.setImageResource(hero2.getImage1());
                                         }
                                         CountDownTimer attaqueP1 = new CountDownTimer(1000, 1000) {
                                             @Override
@@ -476,7 +453,6 @@ public class FightActivity  extends AppCompatActivity {
                         if (hero2.IsKO()) {
                             endgame();
                             textFinGame.setText(hero1.getName() + " Vainqueur !");
-                            imgFinGame.setImageResource(hero1.getImage1());
                         }
                         CountDownTimer contreAttaque = new CountDownTimer(1000, 1000) {
                             @Override
@@ -507,7 +483,6 @@ public class FightActivity  extends AppCompatActivity {
                                         if (hero1.IsKO()) {
                                             endgame();
                                             textFinGame.setText(hero2.getName() + " Vainqueur !");
-                                            imgFinGame.setImageResource(hero2.getImage1());
                                         }
                                         CountDownTimer attaqueP1 = new CountDownTimer(1000, 1000) {
                                             @Override
@@ -542,7 +517,6 @@ public class FightActivity  extends AppCompatActivity {
                                         if (hero1.IsKO()) {
                                             endgame();
                                             textFinGame.setText(hero2.getName() + " Vainqueur !");
-                                            imgFinGame.setImageResource(hero2.getImage1());
                                         }
                                         CountDownTimer attaqueP1 = new CountDownTimer(1000, 1000) {
                                             @Override
@@ -607,6 +581,7 @@ public class FightActivity  extends AppCompatActivity {
         boutonRevive.setVisibility(View.VISIBLE);
         boutonSelection.setVisibility(View.VISIBLE);
         textFinGame.setVisibility(View.VISIBLE);
+
         imgFinGame.setVisibility(View.VISIBLE);
         MediaPlayer mediadead = MediaPlayer.create(getBaseContext(), R.raw.coupphysique);
         mediadead.start();
@@ -626,7 +601,6 @@ public class FightActivity  extends AppCompatActivity {
         boutonRevive.setVisibility(View.GONE);
         boutonSelection.setVisibility(View.GONE);
         textFinGame.setVisibility(View.GONE);
-        imgFinGame.setVisibility(View.GONE);
     }
 
 
