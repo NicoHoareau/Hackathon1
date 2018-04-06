@@ -101,7 +101,7 @@ public class FightActivity  extends AppCompatActivity {
 
 
         // Préparation Arene
-        final int[] photos={R.drawable.gifview1firehouse, R.drawable.gifview2rainkioske,R.drawable.gifview3cascadegif, R.drawable.dark_temple};
+        final int[] photos={R.drawable.gifview1firehouse, R.drawable.rock,R.drawable.gifview3cascadegif, R.drawable.dark_temple};
         final GifImageView gifImageView = findViewById(R.id.gif_iv);
         final Random ran =new Random();
         final int i = ran.nextInt(photos.length);
