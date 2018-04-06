@@ -16,67 +16,45 @@
 
     <ImageView
         android:id="@+id/imageView_perso1"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_marginBottom="36dp"
-        android:layout_marginStart="116dp"
-        app:layout_constraintBottom_toTopOf="@+id/button_attSpe"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_marginBottom="24dp"
+        android:layout_marginStart="72dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@mipmap/ic_launcher" />
 
     <ImageView
         android:id="@+id/imageView_perso2"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_marginBottom="116dp"
-        android:layout_marginEnd="76dp"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_marginBottom="24dp"
+        android:layout_marginEnd="84dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@mipmap/ic_launcher" />
 
-    <TextView
-        android:id="@+id/textView_test2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:text="TextView"
-        style="@style/textname"
-        app:layout_constraintBottom_toTopOf="@+id/button_Att"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <TextView
-        android:id="@+id/textView_test1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginStart="8dp"
-        android:text="TextView"
-        style="@style/textname"
-        app:layout_constraintBottom_toTopOf="@+id/button_Att"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
+    <ImageView
         android:id="@+id/butto_rematch"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:layout_marginBottom="16dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:text="rematch"
+        android:src="@drawable/rematch"
         android:visibility="gone"
         app:layout_constraintBottom_toTopOf="@+id/button_selection"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <Button
+    <ImageView
         android:id="@+id/button_selection"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:text="retour"
+        android:src="@drawable/return_fight"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -98,27 +76,18 @@
 
     <TextView
         android:id="@+id/textView_fingame"
+        style="@style/textname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="164dp"
+        android:layout_marginTop="100dp"
         android:text="TextView"
-        style="@style/textname"
+        android:textSize="30dp"
         android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/imageView_fingame"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginEnd="8dp"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="@+id/textView_fingame"
-        app:layout_constraintEnd_toStartOf="@+id/textView_fingame"
-        app:srcCompat="@mipmap/ic_launcher" />
 
     <ImageView
         android:id="@+id/imageView_impact1"
@@ -178,12 +147,12 @@
         android:id="@+id/imageView_spé2"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_marginBottom="24dp"
+        android:layout_marginBottom="8dp"
         android:layout_marginEnd="24dp"
         android:text="Attaque"
         android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/imageView_att2"
+        app:layout_constraintBottom_toTopOf="@+id/imageView_att2"
+        app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/super_attack" />
 
     <ProgressBar
@@ -214,7 +183,7 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginBottom="24dp"
-        android:layout_marginStart="28dp"
+        android:layout_marginStart="24dp"
         android:text="Attaque"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -224,11 +193,11 @@
         android:id="@+id/button_attSpe"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_marginBottom="24dp"
+        android:layout_marginBottom="8dp"
         android:layout_marginStart="24dp"
         android:text="Attaque Spé"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/button_Att"
+        app:layout_constraintBottom_toTopOf="@+id/button_Att"
+        app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/super_attack" />
 
     <ImageView

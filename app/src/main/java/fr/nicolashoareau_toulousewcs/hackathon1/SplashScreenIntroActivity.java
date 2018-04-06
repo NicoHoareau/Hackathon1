@@ -11,7 +11,7 @@ import android.support.v7.app.AppCompatActivity;
 
 public class SplashScreenIntroActivity extends AppCompatActivity {
 
-    private static int SPLASH_TIME_OUT = 5000;
+    private static int SPLASH_TIME_OUT = 6000;
 
 
     @Override
