@@ -99,6 +99,9 @@ public class FightActivity  extends AppCompatActivity {
                                      }
                                  }
         );
+        //No clickable gif :
+        gifImageView.setEnabled(false);
+
         textTest1.setText(hero1.getIntelligence() + " , " + hero1.getStrength() + " , " + hero1.getPower() + " , " + hero1.getCombat() + " , " + hero1.getDurability());
         textTest2.setText(hero2.getIntelligence() + " , " + hero2.getStrength() + " , " + hero2.getPower() + " , " + hero2.getCombat() + " , " + hero2.getDurability());
 
