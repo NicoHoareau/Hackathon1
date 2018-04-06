@@ -14,51 +14,6 @@
         android:scaleType="fitXY"
         android:src="@drawable/gifview1firehouse" />
 
-    <ProgressBar
-        android:id="@+id/progressBar_1"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="300dp"
-        android:layout_height="28dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:progressDrawable="@drawable/progressbar"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView_icon1" />
-
-    <ProgressBar
-        android:id="@+id/progressBar2"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="300dp"
-        android:layout_height="28dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginTop="8dp"
-        android:progressDrawable="@drawable/progressbar"
-        android:rotation="180"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView_icon2" />
-
-    <ImageView
-        android:id="@+id/button_Att"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginBottom="24dp"
-        android:layout_marginStart="28dp"
-        android:text="Attaque"
-        app:srcCompat="@drawable/basic_attack"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <ImageView
-        android:id="@+id/button_attSpe"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginBottom="24dp"
-        android:layout_marginStart="24dp"
-        android:text="Attaque Spé"
-        app:srcCompat="@drawable/super_attack"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/button_Att" />
-
     <ImageView
         android:id="@+id/imageView_perso1"
         android:layout_width="150dp"
@@ -78,48 +33,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@mipmap/ic_launcher" />
-
-    <ImageView
-        android:id="@+id/imageView_icon1"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@mipmap/ic_launcher_round" />
-
-    <ImageView
-        android:id="@+id/imageView_icon2"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@mipmap/ic_launcher_round" />
-
-    <TextView
-        android:id="@+id/textView_name1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginStart="8dp"
-        android:text="TextView"
-        style="@style/textname"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView_icon1"
-        app:layout_constraintStart_toEndOf="@+id/imageView_icon1" />
-
-    <TextView
-        android:id="@+id/textView_name2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:text="TextView"
-        style="@style/textname"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView_icon2"
-        app:layout_constraintEnd_toStartOf="@+id/imageView_icon2" />
 
     <TextView
         android:id="@+id/textView_test2"
@@ -238,6 +151,18 @@
         app:srcCompat="@drawable/impact" />
 
     <ImageView
+        android:id="@+id/imageView_effectBlanc"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="#5affffff"
+        android:visibility="invisible"
+         />
+
+    <ImageView
         android:id="@+id/imageView_att2"
         android:layout_width="50dp"
         android:layout_height="50dp"
@@ -260,4 +185,92 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/imageView_att2"
         app:srcCompat="@drawable/super_attack" />
+
+    <ProgressBar
+        android:id="@+id/progressBar2"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="300dp"
+        android:layout_height="28dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="8dp"
+        android:progressDrawable="@drawable/progressbar"
+        android:rotation="180"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView_icon2" />
+
+    <ProgressBar
+        android:id="@+id/progressBar_1"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="300dp"
+        android:layout_height="28dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:progressDrawable="@drawable/progressbar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView_icon1" />
+
+    <ImageView
+        android:id="@+id/button_Att"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="24dp"
+        android:layout_marginStart="28dp"
+        android:text="Attaque"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/basic_attack" />
+
+    <ImageView
+        android:id="@+id/button_attSpe"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="24dp"
+        android:layout_marginStart="24dp"
+        android:text="Attaque Spé"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/button_Att"
+        app:srcCompat="@drawable/super_attack" />
+
+    <ImageView
+        android:id="@+id/imageView_icon2"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@mipmap/ic_launcher_round" />
+
+    <ImageView
+        android:id="@+id/imageView_icon1"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@mipmap/ic_launcher_round" />
+
+    <TextView
+        android:id="@+id/textView_name2"
+        style="@style/textname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView_icon2"
+        app:layout_constraintEnd_toStartOf="@+id/imageView_icon2" />
+
+    <TextView
+        android:id="@+id/textView_name1"
+        style="@style/textname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="8dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView_icon1"
+        app:layout_constraintStart_toEndOf="@+id/imageView_icon1" />
+
 </android.support.constraint.ConstraintLayout>
